@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">TrueProject</string>
     <string name="title_recipe">Receitas</string>
-    <string name="title_inventory">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_inventory">Ingredientes</string>
+    <string name="title_notifications">Perfil</string>
+    <string name="vegan">Vegan</string>
+    <string name="medidas">Medidas</string>
+    <string name="alergias">Alergias</string>
+    <string name="nozes">Nozes</string>
+    <string name="camarao">Camarão</string>
+    <string name="leite">Leite</string>
+    <string name="ovo">Ovo</string>
+    <string name="peixe">Peixe</string>
+    <string name="frutos">Frutos Secos</string>
+    <string name="soja">Soja</string>
 </resources>
