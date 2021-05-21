@@ -1,6 +1,7 @@
 package com.example.trueproject.custom_classes;
 
-class IngredientQuantity {
+public class IngredientQuantity {
+
 	private Ingredient ingredient;
 	private double quantity;
 	private Unit unit;

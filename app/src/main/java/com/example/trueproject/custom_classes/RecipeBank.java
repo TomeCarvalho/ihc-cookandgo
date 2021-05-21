@@ -3,7 +3,7 @@ package com.example.trueproject.custom_classes;
 import java.util.Map;
 import java.util.HashMap;
 
-class RecipeBank {
+public class RecipeBank {
 	private static Map<Integer, Recipe> m = new HashMap<>();
 
 	static {
@@ -29,7 +29,8 @@ class RecipeBank {
 				new IngredientQuantity(IngredientBank.get(8), 500, Unit.G),
 				new IngredientQuantity(IngredientBank.get(9), 2, Unit.SPOON_SOUP)
 			},
-			500 // calorias: não diz no site do pingo doce
+			500, // calorias: não diz no site do pingo doce
+			RecipeType.MEAT
 		));
 	}
 

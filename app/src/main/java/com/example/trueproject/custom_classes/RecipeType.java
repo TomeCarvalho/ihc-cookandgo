@@ -1,6 +1,6 @@
 package com.example.trueproject.custom_classes;
 
-enum RecipeType {
+public enum RecipeType {
 	MEAT("carne"),
 	FISH("peixe"),
 	PASTA("massas"),
