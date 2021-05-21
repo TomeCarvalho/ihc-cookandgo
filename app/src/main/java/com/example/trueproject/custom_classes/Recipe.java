@@ -56,4 +56,11 @@ class Recipe {
 		str = str.substring(0, str.length() - 1);
 		return str;
 	}
+
+	public boolean isVegetarian() {
+		for (IngredientQuantity iq : ingredientQuantities)
+			if (!iq.getIngredient().isVegetarian())
+				return false;
+		return true;
+	}
 }
