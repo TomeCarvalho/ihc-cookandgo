@@ -1,3 +1,5 @@
+package com.example.trueproject.custom_classes;
+
 enum Unit {
 	G("g"),
 	DL("dl"),

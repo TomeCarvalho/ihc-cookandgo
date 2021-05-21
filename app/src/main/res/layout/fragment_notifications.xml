@@ -1,86 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.notifications.NotificationsFragment">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             tools:context=".ui.notifications.NotificationsFragment">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:orientation="horizontal"
+                tools:context=".ui.notifications.NotificationsFragment">
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/vegan"
+                    android:textSize="10pt"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="100dp" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="250dp"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
+                    tools:layout_editor_absoluteX="307dp"
+                    tools:layout_editor_absoluteY="100dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                tools:context=".ui.notifications.NotificationsFragment">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/medidas"
+                    android:textSize="10pt"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="45dp"
+                    tools:layout_editor_absoluteY="100dp" />
+
+                <Switch
+                    android:id="@+id/switch2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="225dp"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
+                    tools:layout_editor_absoluteX="307dp"
+                    tools:layout_editor_absoluteY="100dp" />
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="65dp"
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/vegan"
-                android:textSize="10pt"
-                tools:layout_editor_absoluteX="45dp"
-                tools:layout_editor_absoluteY="100dp" />
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="10dp"
-                tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
-                tools:layout_editor_absoluteX="307dp"
-                tools:layout_editor_absoluteY="100dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:orientation="horizontal"
-            tools:context=".ui.notifications.NotificationsFragment">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/medidas"
+                android:text="@string/alergias"
                 android:textSize="10pt"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="45dp"
                 tools:layout_editor_absoluteY="100dp" />
 
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="225dp"
-                android:layout_marginTop="10dp"
-                tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
-                tools:layout_editor_absoluteX="307dp"
-                tools:layout_editor_absoluteY="100dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/alergias"
-            android:textSize="10pt"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="45dp"
-            tools:layout_editor_absoluteY="100dp" />
+    </ScrollView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
+    </ListView>
+
+</LinearLayout>
+
+        <!--
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
@@ -132,7 +151,7 @@
             tools:layout_editor_absoluteY="480dp" />
 
         <CheckBox
-            android:id="@+id/checkBox7"
+            android:id="@+id/checkBox8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -141,10 +160,98 @@
             tools:layout_editor_absoluteX="44dp"
             tools:layout_editor_absoluteY="288dp" />
 
+        <CheckBox
+            android:id="@+id/checkBox9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox713"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox714"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox715"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox71514"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox7123123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="@string/frutos"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="288dp" />
+
+        -->
 
 
-    </LinearLayout>
-
-</ScrollView>
 
 
