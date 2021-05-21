@@ -1,21 +1,26 @@
+package com.example.trueproject.custom_classes;
+
 import java.util.Set;
 import java.util.HashSet;
 
-class Recipe {
+public class Recipe {
 	private int id;
 	private String name;
 	private String description;
 	private String preparation;
 	private IngredientQuantity[] ingredientQuantities;
 	private int calories;
+	private RecipeType type;
 
-	public Recipe(int id, String name, String description, String preparation, IngredientQuantity[] ingredientQuantities, int calories) {
+	public Recipe(int id, String name, String description, String preparation,
+				  IngredientQuantity[] ingredientQuantities, int calories, RecipeType type) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.preparation = preparation;
 		this.ingredientQuantities = ingredientQuantities;
 		this.calories = calories;
+		this.type = type;
 	}
 
 	public int getId() {

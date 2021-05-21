@@ -1,4 +1,6 @@
-enum Allergies {
+package com.example.trueproject.custom_classes;
+
+public enum Allergies {
 	MILK("leite"),
 	EGGS("ovos"),
 	FISH("peixe"),

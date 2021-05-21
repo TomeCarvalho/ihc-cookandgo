@@ -1,13 +1,15 @@
+package com.example.trueproject.custom_classes;
+
 import java.util.Set;
 import java.util.HashSet;
 
-class Ingredient {
+public class Ingredient {
 	private int id;
 	private String name;
 	private Allergies allergy;
 	private boolean vegetarian;
 
-	public Ingredient(int id, String name, Allergies allergy, boolean vegetarian) {
+	public Ingredient(int id, String name, boolean vegetarian, Allergies allergy) {
 		this.id = id;
 		this.name = name;
 		this.allergy = allergy;
