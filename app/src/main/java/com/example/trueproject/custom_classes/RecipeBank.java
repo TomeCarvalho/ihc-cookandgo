@@ -153,6 +153,37 @@ public class RecipeBank {
                 new Time(30),
                 new Time(0)
         ));
+        m.put(6, new Recipe(
+                6,
+                "Salada de cuscuz com halloumi grelhado",
+                "Originário do Chipre, o queijo halloumi tem vindo a tornar-se cada vez mais popular. Nesta salada de cuscuz, o halloumi grelhado e a beterraba são os protagonistas.",
+                "1. Pré-aqueça o forno a 190 °C."
+                        + "\n2. Cozinhe o cuscuz conforme as instruções da embalagem e coloque-o no frio para refrescar."
+                        + "\n3. Entretanto, descasque e corte a cenoura aos cubos e a cebola em fatias finas."
+                        + "\n4. Ponha os legumes num tabuleiro de forno, polvilhe com o alho picado, previamente descascado, metade do sal, tomilho e pimenta a gosto. Regue com uma colher de sopa de azeite e leve ao forno durante 15 minutos."
+                        + "\n5. Corte a beterraba e o queijo em fatias finas e grelhe numa placa untada com um pouco do azeite. Reserve."
+                        + "\n6. Retire os legumes do forno e envolva-os com o cuscuz. Tempere com o restante sal, tomilho e regue com o azeite."
+                        + "\n7. Coloque o cuscuz numa travessa e disponha sobre ele as fatias de beterraba e de queijo."
+                        + "\n8. Polvilhe com folhas de hortelã. Sirva com o tomate.",
+                new IngredientQuantity[]{
+                        new IngredientQuantity(IngredientBank.get(39), 200 / 4.0, Unit.G),
+                        new IngredientQuantity(IngredientBank.get(40), 150 / 4.0, Unit.G),
+                        new IngredientQuantity(IngredientBank.get(41), 100 / 4.0, Unit.G),
+                        new IngredientQuantity(IngredientBank.get(2), 2 / 4.0, Unit.UNIT),
+                        new IngredientQuantity(IngredientBank.get(42), 0, Unit.ENOUGH),
+                        new IngredientQuantity(IngredientBank.get(43), 0, Unit.ENOUGH),
+                        new IngredientQuantity(IngredientBank.get(7), 3 / 4.0, Unit.SPOON_SOUP),
+                        new IngredientQuantity(IngredientBank.get(44), 150 / 4.0, Unit.G),
+                        new IngredientQuantity(IngredientBank.get(45), 1 / 4.0, Unit.EMB),
+                        new IngredientQuantity(IngredientBank.get(38), 0, Unit.ENOUGH),
+                        new IngredientQuantity(IngredientBank.get(16), 200 / 4.0, Unit.G),
+                },
+                442,
+                RecipeType.VEGETARIAN,
+                Difficulty.EASY,
+                new Time(30),
+                new Time(0)
+        ));
     }
 
     public static Collection<Recipe> getAllRecipes() {

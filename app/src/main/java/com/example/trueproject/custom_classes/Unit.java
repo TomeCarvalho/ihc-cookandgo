@@ -10,6 +10,7 @@ public enum Unit {
 	SPOON_TEA(" colheres de chá"),
 	SPOON_SOUP(" colheres de sopa"),
 	ENOUGH(" que baste"),
+	EMB(" embalagens"),
 	UNIT(" unidades");
 
 	private String name;

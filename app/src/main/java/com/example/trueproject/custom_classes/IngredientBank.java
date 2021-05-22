@@ -9,7 +9,7 @@ public class IngredientBank {
 	static {
 		// "database" goes here (put ingredients into map)
 		m.put(1, new Ingredient(1, "carne de porco aos cubos", false));
-		m.put(2, new Ingredient(2, "dentes de alho picado", true));
+		m.put(2, new Ingredient(2, "dentes de alho", true));
 		m.put(3, new Ingredient(3, "folhas de louro", true));
 		m.put(4, new Ingredient(4, "massa de pimentão", true));
 		m.put(5, new Ingredient(5, "vinho branco", true));
@@ -24,7 +24,7 @@ public class IngredientBank {
 		m.put(13, new Ingredient(13, "salsa picada", true));
 		m.put(14, new Ingredient(14, "batatas médias para cozer", true));
 		m.put(15, new Ingredient(15, "bimis", true));
-		m.put(16, new Ingredient(16, "tomate maduro", true));
+		m.put(16, new Ingredient(16, "tomate", true));
 		m.put(17, new Ingredient(17, "manjericão", true));
 
 		m.put(18, new Ingredient(18, "pimenta-de-caiena", true));
@@ -50,6 +50,14 @@ public class IngredientBank {
 		m.put(36, new Ingredient(36, "bolacha Maria sem glúten", true));
 		m.put(37, new Ingredient(37, "coco ralado", true));
 		m.put(38, new Ingredient(38, "hortelã", true));
+
+		m.put(39, new Ingredient(39, "cuscuz", true));
+		m.put(40, new Ingredient(40, "cenoura", true));
+		m.put(41, new Ingredient(41, "cebola-roxa", true));
+		m.put(42, new Ingredient(42, "tomilho", true));
+		m.put(43, new Ingredient(43, "pimenta preta", true));
+		m.put(44, new Ingredient(44, "beterraba", true));
+		m.put(45, new Ingredient(45, "queijo halloumi", true));
 	}
 
 	public static Ingredient get(int id) {
