@@ -17,12 +17,12 @@
             android:orientation="vertical"
             tools:context=".ui.notifications.NotificationsFragment">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:orientation="horizontal"
                 tools:context=".ui.notifications.NotificationsFragment">
-
 
                 <TextView
                     android:id="@+id/textView4"
@@ -36,39 +36,10 @@
                     tools:layout_editor_absoluteY="100dp" />
 
                 <Switch
-                    android:id="@+id/switch1"
+                    android:id="@+id/switch_vegan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="250dp"
-                    android:layout_marginTop="10dp"
-                    tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
-                    tools:layout_editor_absoluteX="307dp"
-                    tools:layout_editor_absoluteY="100dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                tools:context=".ui.notifications.NotificationsFragment">
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/medidas"
-                    android:textSize="10pt"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="45dp"
-                    tools:layout_editor_absoluteY="100dp" />
-
-                <Switch
-                    android:id="@+id/switch2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="225dp"
+                    android:layout_marginLeft="240dp"
                     android:layout_marginTop="10dp"
                     tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
                     tools:layout_editor_absoluteX="307dp"
@@ -93,8 +64,8 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="199dp"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"

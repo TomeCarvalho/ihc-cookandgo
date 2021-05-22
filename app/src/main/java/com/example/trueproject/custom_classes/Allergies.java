@@ -16,14 +16,15 @@ import com.example.trueproject.ui.notifications.NotificationsViewModel;
 import java.util.List;
 
 public enum Allergies {
-	MILK("leite"),
-	EGGS("ovos"),
-	FISH("peixe"),
-	SHELLFISH("marisco"),
-	NUTS("nozes"),
-	PEANUTS("amendoins"),
-	WHEAT("trigo"),
-	SOYBEANS("soja");
+	PEANUTS("Amendoins"),
+	MILK("Leite"),
+	SHELLFISH("Marisco"),
+	NUTS("Nozes"),
+	EGGS("Ovos"),
+	FISH("Peixe"),
+	SOYBEANS("Soja"),
+	WHEAT("Trigo");
+
 
 	private String name;
 	private boolean selected = false;

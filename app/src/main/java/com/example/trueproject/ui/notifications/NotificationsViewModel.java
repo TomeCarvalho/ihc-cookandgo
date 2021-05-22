@@ -13,15 +13,11 @@ import com.example.trueproject.custom_classes.Allergies;
 import java.util.ArrayList;
 
 public class NotificationsViewModel extends ViewModel {
-
     private MutableLiveData<String> mText;
-
 
     public NotificationsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
-
-
     }
 
     public LiveData<String> getText() {

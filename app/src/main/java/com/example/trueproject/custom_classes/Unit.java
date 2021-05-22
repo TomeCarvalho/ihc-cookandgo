@@ -1,7 +1,6 @@
 package com.example.trueproject.custom_classes;
 
 public enum Unit {
-
 	G("g"),
 	DL("dl"),
 	ML("ml"),
