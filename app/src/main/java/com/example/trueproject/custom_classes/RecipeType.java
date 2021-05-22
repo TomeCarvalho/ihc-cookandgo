@@ -1,11 +1,11 @@
 package com.example.trueproject.custom_classes;
 
 public enum RecipeType {
-	MEAT("carne"),
-	FISH("peixe"),
-	PASTA("massas"),
-	DESSERT("sobremesas"),
-	VEGETARIAN("vegetariano");
+	MEAT("Carne"),
+	PASTA("Massas"),
+	FISH("Peixe"),
+	DESSERT("Sobremesas"),
+	VEGETARIAN("Vegetariano");
 
 	private String name;
 

@@ -1,7 +1,9 @@
 package com.example.trueproject.custom_classes;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
 
 public class RecipeBank {
 	private static Map<Integer, Recipe> m = new HashMap<>();
@@ -19,19 +21,26 @@ public class RecipeBank {
 			+ "\n6. De seguida, acrescente as amêijoas, mexa e tape a frigideira para que as conchas abram durante 2 minutos."
 			+ "\n7. Sirva com os coentros picados e acompanhado de batata frita aos cubos.",
 			new IngredientQuantity[]{
-				new IngredientQuantity(IngredientBank.get(1), 800, Unit.G),
-				new IngredientQuantity(IngredientBank.get(2), 3, Unit.UNIT),
-				new IngredientQuantity(IngredientBank.get(3), 1, Unit.UNIT),
-				new IngredientQuantity(IngredientBank.get(4), 1, Unit.UNIT),
-				new IngredientQuantity(IngredientBank.get(5), 2.5, Unit.DL),
-				new IngredientQuantity(IngredientBank.get(6), 2.5, Unit.SPOON_TEA),
-				new IngredientQuantity(IngredientBank.get(7), 100, Unit.ML),
-				new IngredientQuantity(IngredientBank.get(8), 500, Unit.G),
-				new IngredientQuantity(IngredientBank.get(9), 2, Unit.SPOON_SOUP)
+				new IngredientQuantity(IngredientBank.get(1), 800 / 4.0, Unit.G),
+				new IngredientQuantity(IngredientBank.get(2), 3 / 4.0, Unit.UNIT),
+				new IngredientQuantity(IngredientBank.get(3), 1 / 4.0, Unit.UNIT),
+				new IngredientQuantity(IngredientBank.get(4), 1 / 4.0, Unit.UNIT),
+				new IngredientQuantity(IngredientBank.get(5), 2.5 / 4.0, Unit.DL),
+				new IngredientQuantity(IngredientBank.get(6), 2.5 / 4.0, Unit.SPOON_TEA),
+				new IngredientQuantity(IngredientBank.get(7), 100 / 4.0, Unit.ML),
+				new IngredientQuantity(IngredientBank.get(8), 500 / 4.0, Unit.G),
+				new IngredientQuantity(IngredientBank.get(9), 2 / 4.0, Unit.SPOON_SOUP)
 			},
 			500, // calorias: não diz no site do pingo doce
-			RecipeType.MEAT
+			RecipeType.MEAT,
+			Difficulty.EASY,
+			new Time(30),
+			new Time(2, 0)
 		));
+	}
+
+	public static Collection<Recipe> getAllRecipes() {
+		return m.values();
 	}
 
 	public static Recipe getRecipe(int id) {

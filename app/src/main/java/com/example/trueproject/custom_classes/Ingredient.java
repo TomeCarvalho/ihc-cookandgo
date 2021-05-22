@@ -1,5 +1,6 @@
 package com.example.trueproject.custom_classes;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -41,5 +42,15 @@ public class Ingredient {
 	@Override
 	public String toString () {
 		return getName();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Ingredient that = (Ingredient) o;
+		return id == that.id;
 	}
 }
