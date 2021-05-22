@@ -77,12 +77,13 @@ public class NotificationsFragment extends Fragment {
     }
 
     public void save(View view) {
-        Log.i("amogus", "sus");
         for (int i = 0; i < listView.getCount(); i++) {
-            Log.i("amogus", String.valueOf(i));
+            Log.i("allergyLV", String.valueOf(i));
             Allergies al = (Allergies) listView.getItemAtPosition(i);
-            Log.i("amogus", String.valueOf(al.isSelected()));
+            Log.i("allergyLV", String.valueOf(al.isSelected()));
+            SharedData.allergies[i].setSelected(al.isSelected());
         }
+        SharedData.debugAllergies();
     }
 }
 
