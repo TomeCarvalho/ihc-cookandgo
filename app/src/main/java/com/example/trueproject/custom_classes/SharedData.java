@@ -35,7 +35,7 @@ public class SharedData {
         for (Recipe r : RecipeBank.getAllRecipes()) {
             if (!containsAllergy(r.getAllergies(), allergySet)
             && recipeTypeSet.contains(r.getType())
-            && (showUncookables || r.canBeCookedWith(ingQtySet))) {
+            && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
             }
         }

@@ -92,17 +92,21 @@ public class Recipe {
         return true;
     }
 
-    public boolean canBeCookedWith(Set<IngredientQuantity> ingQty) {
+    public boolean canBeCookedWith(Set<IngredientQuantity> ingQty, int nMeals) {
         for (IngredientQuantity iq : ingQty)
-            if (!hasEnoughOf(ingredientQuantities, iq))
+            if (!hasEnoughOf(ingredientQuantities, iq, nMeals))
                 return false;
         return true;
     }
 
-    private static boolean hasEnoughOf(IngredientQuantity[] arr, IngredientQuantity iq) {
+    public boolean canBeCookedWith(Set<IngredientQuantity> ingQty) {
+        return canBeCookedWith(ingQty, 1);
+    }
+
+    private static boolean hasEnoughOf(IngredientQuantity[] arr, IngredientQuantity iq, int nMeals) {
         for (IngredientQuantity arrIq : arr)
             if (!(arrIq.getIngredient().equals(iq.getIngredient())
-            && arrIq.getQuantity() >= iq.getQuantity()))
+            && arrIq.getQuantity() >= nMeals * iq.getQuantity()))
                 return false;
         return true;
     }
