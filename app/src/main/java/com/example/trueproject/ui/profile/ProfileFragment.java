@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,7 +30,7 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         profileViewModel =
                 new ViewModelProvider(this).get(ProfileViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         this.listView = (ListView) root.findViewById(R.id.listView);
         this.button = (Button) root.findViewById(R.id.button);
@@ -85,6 +86,7 @@ public class ProfileFragment extends Fragment {
                 SharedData.allergySet.remove(al);
         }
         SharedData.debugAllergies();
+        Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
     }
 }
 

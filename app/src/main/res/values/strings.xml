@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TrueProject</string>
+    <string name="app_name">Cook and Go</string>
     <string name="title_recipe">Receitas</string>
     <string name="title_inventory">Ingredientes</string>
     <string name="title_perfil">Perfil</string>
@@ -13,6 +13,6 @@
     <string name="peixe">Peixe</string>
     <string name="frutos">Frutos Secos</string>
     <string name="soja">Soja</string>
-    <string name="teste">A M O GU S</string>
-    <string name="save">Save</string>
+    <string name="teste">A M O G U S</string>
+    <string name="save">Guardar</string>
 </resources>

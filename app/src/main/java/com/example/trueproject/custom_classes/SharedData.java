@@ -9,7 +9,7 @@ public class SharedData {
     public static Set<Recipe> recipeSet = new HashSet<>();
     public static Set<IngredientQuantity> ingQtySet = new HashSet<>();
     public static boolean showUncookables = true;
-    public static boolean vegetarian = false; // TODO: useless?
+    // public static boolean vegetarian = false; // TODO: useless?
 
     // simulate Joaquina initial data like in low fidelity prototype
     public static void loadJoaquina() {
@@ -30,7 +30,7 @@ public class SharedData {
             recipeTypeSet.add(recipeType);
     }
 
-    public static void updateRecipes(int nMeals, boolean cookablesOnly) {
+    public static void updateRecipes(int nMeals) {
         recipeSet = new HashSet<>();
         for (Recipe r : RecipeBank.getAllRecipes()) {
             if (!containsAllergy(r.getAllergies(), allergySet)

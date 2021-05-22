@@ -15,14 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trueproject.R;
 
 public class IngredientsFragment extends Fragment {
-
     private IngredientsViewModel ingredientsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         ingredientsViewModel =
                 new ViewModelProvider(this).get(IngredientsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View root = inflater.inflate(R.layout.fragment_ingredients, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
         ingredientsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
