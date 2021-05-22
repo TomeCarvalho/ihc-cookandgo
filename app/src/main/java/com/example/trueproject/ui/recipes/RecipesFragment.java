@@ -15,11 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.Recipe;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class RecipesFragment extends Fragment {
     private RecipesViewModel recipesViewModel;
@@ -40,7 +36,6 @@ public class RecipesFragment extends Fragment {
         return root;
     }
 
-
     public void filterByTime() {
         TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
             return r1.getCookingTime().compareTo(r2.getCookingTime());
@@ -48,6 +43,7 @@ public class RecipesFragment extends Fragment {
 
         tree.addAll(recipes);
         recipes = tree;
+        showRecipes();
     }
 
     public void filterByName() {
@@ -57,6 +53,7 @@ public class RecipesFragment extends Fragment {
 
         tree.addAll(recipes);
         recipes = tree;
+        showRecipes();
     }
 
     public void filterByNameReversed() {
@@ -66,6 +63,7 @@ public class RecipesFragment extends Fragment {
 
         tree.addAll(recipes);
         recipes = tree;
+        showRecipes();
     }
 
     public void filterByDifficult() {
@@ -75,12 +73,10 @@ public class RecipesFragment extends Fragment {
 
         tree.addAll(recipes);
         recipes = tree;
+        showRecipes();
     }
-
 
     public void showRecipes() {
         // SHOW THE RECIPES STORED
     }
-
-
 }

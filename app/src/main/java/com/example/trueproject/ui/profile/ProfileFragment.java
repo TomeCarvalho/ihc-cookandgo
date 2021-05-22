@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment {
         // ListItem is very simple (Only one CheckedTextView).
         ArrayAdapter<Allergies> arrayAdapter
                 = new ArrayAdapter<>(getActivity().getApplicationContext(),
-                android.R.layout.simple_list_item_checked, als);
+                android.R.layout.simple_list_item_multiple_choice, als);
 
         this.listView.setAdapter(arrayAdapter);
 

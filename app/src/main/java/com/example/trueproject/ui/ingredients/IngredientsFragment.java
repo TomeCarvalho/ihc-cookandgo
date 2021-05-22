@@ -22,11 +22,10 @@ public class IngredientsFragment extends Fragment {
         ingredientsViewModel =
                 new ViewModelProvider(this).get(IngredientsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_ingredients, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
         ingredientsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                // textView.setText(s);
             }
         });
         return root;
