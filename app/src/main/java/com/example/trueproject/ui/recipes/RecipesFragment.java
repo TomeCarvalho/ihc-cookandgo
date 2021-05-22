@@ -13,9 +13,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trueproject.R;
+import com.example.trueproject.custom_classes.Recipe;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class RecipesFragment extends Fragment {
     private RecipesViewModel recipesViewModel;
+    private Set<Recipe> recipes = new HashSet<Recipe>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,4 +39,48 @@ public class RecipesFragment extends Fragment {
         });
         return root;
     }
+
+
+    public void filterByTime() {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
+            return r1.getCookingTime().compareTo(r2.getCookingTime());
+        });
+
+        tree.addAll(recipes);
+        recipes = tree;
+    }
+
+    public void filterByName() {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
+            return r1.getName().compareTo(r2.getName());
+        });
+
+        tree.addAll(recipes);
+        recipes = tree;
+    }
+
+    public void filterByNameReversed() {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
+            return r2.getName().compareTo(r1.getName());
+        });
+
+        tree.addAll(recipes);
+        recipes = tree;
+    }
+
+    public void filterByDifficult() {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
+            return r2.getDifficulty().getVal() - r1.getDifficulty().getVal();
+        });
+
+        tree.addAll(recipes);
+        recipes = tree;
+    }
+
+
+    public void showRecipes() {
+        // SHOW THE RECIPES STORED
+    }
+
+
 }
