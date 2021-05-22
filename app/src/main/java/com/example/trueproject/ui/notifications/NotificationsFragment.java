@@ -36,6 +36,12 @@ public class NotificationsFragment extends Fragment {
 
         this.listView = (ListView) root.findViewById(R.id.listView);
         this.button = (Button) root.findViewById(R.id.button);
+        this.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save(view);
+            }
+        });
         this.listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -44,8 +50,9 @@ public class NotificationsFragment extends Fragment {
                 Log.i(TAG, "onItemClick: " + position);
                 CheckedTextView v = (CheckedTextView) view;
                 boolean currentCheck = v.isChecked();
+                Log.i("isChecked", String.valueOf(currentCheck));
                 Allergies al = (Allergies) listView.getItemAtPosition(position);
-                al.setSelected(!currentCheck);
+                al.setSelected(currentCheck);
             }
         });
 
@@ -67,6 +74,15 @@ public class NotificationsFragment extends Fragment {
 
         for (int i = 0; i < als.length; i++)
             this.listView.setItemChecked(i, als[i].isSelected());
+    }
+
+    public void save(View view) {
+        Log.i("amogus", "sus");
+        for (int i = 0; i < listView.getCount(); i++) {
+            Log.i("amogus", String.valueOf(i));
+            Allergies al = (Allergies) listView.getItemAtPosition(i);
+            Log.i("amogus", String.valueOf(al.isSelected()));
+        }
     }
 }
 
