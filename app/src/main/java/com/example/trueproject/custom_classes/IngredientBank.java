@@ -1,5 +1,6 @@
 package com.example.trueproject.custom_classes;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -62,5 +63,9 @@ public class IngredientBank {
 
 	public static Ingredient get(int id) {
 		return m.get(id);
+	}
+
+	public static Collection<Ingredient> getAllIngredients() {
+		return m.values();
 	}
 }
