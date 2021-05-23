@@ -58,6 +58,59 @@ public class IngredientBank {
 		m.put(43, new Ingredient(43, "pimenta preta", true));
 		m.put(44, new Ingredient(44, "beterraba", true));
 		m.put(45, new Ingredient(45, "queijo halloumi", true));
+		m.put(46, new Ingredient(46, "laranja", true));
+		m.put(47, new Ingredient(47, "cominhos", true));
+		m.put(48, new Ingredient(48,"costeletas de porco",false));
+		m.put(49, new Ingredient(49,"amêndoa laminada",true));
+		m.put(50, new Ingredient(50,"alho frânces",true));
+		m.put(51, new Ingredient(51,"aipo",true));
+		m.put(52, new Ingredient(52,"chalotas",true));
+		m.put(53, new Ingredient(53,"couve-coração em juliana grossa",true));
+		m.put(54, new Ingredient(54,"água",true));
+		m.put(55, new Ingredient(55,"arroz thai jasmine",true));
+		m.put(56, new Ingredient(56,"framboesas frescas",true));
+		m.put(57, new Ingredient(57,"cebolinho fresco picado",true));
+		m.put(58, new Ingredient(58,"perna de cabrito",false));
+		m.put(59, new Ingredient(59,"colorau",true));
+		m.put(60, new Ingredient(60,"alho em pó",true));
+		m.put(61, new Ingredient(61,"mostarda em grão",true));
+		m.put(62, new Ingredient(62,"mel",true));
+		m.put(63, new Ingredient(63,"alecrim",true));
+		m.put(64, new Ingredient(64,"pinhões",true));
+		m.put(65, new Ingredient(65,"malagueta",true));
+		m.put(66, new Ingredient(66,"salongo",false));
+		m.put(67, new Ingredient(67, "cebola", true));
+		m.put(68, new Ingredient(68, "filete de peixe-espada-preto", false));
+		m.put(69, new Ingredient(69, "pão de cereais ancestrais", true));
+		m.put(70, new Ingredient(70, "azeitonas pretas em rodelas", true));
+		m.put(71, new Ingredient(71, "vinagre", true));
+		m.put(72, new Ingredient(72, "ovo", true));
+		m.put(73, new Ingredient(73, "puré de batata", true));
+		m.put(74, new Ingredient(74, "espinafres", true));
+		m.put(75, new Ingredient(75, "alface iceberg", true));
+		m.put(76, new Ingredient(76, "lima", true));
+		m.put(77, new Ingredient(77, "molho de escabeche", true));
+		m.put(78, new Ingredient(78, "feijão-verde", true));
+		m.put(79, new Ingredient(79, "molho agridoce", true));
+		m.put(80, new Ingredient(80, "gengibre picado", true));
+		m.put(81, new Ingredient(81, "lombos de salmão", false));
+		m.put(82, new Ingredient(82, "polvo fresco", false));
+		m.put(83, new Ingredient(83, "pão saloio em fatias", true));
+		m.put(84, new Ingredient(84, "melancia", true));
+		m.put(85, new Ingredient(85, "kiwi", true));
+		m.put(86, new Ingredient(86, "flor de sal", true));
+		m.put(87, new Ingredient(87, "massa quebrada refrigerada", true));
+		m.put(88, new Ingredient(88, "orégãos secos", true));
+		m.put(89, new Ingredient(89, "queijo mozzarella", true));
+		m.put(90, new Ingredient(90, "salada camponesa com tomate cherry", true));
+		m.put(91, new Ingredient(91, "açúcar amarelo", true));
+		m.put(92, new Ingredient(92, "manteiga", true));
+		m.put(93, new Ingredient(93, "manteiga de amendoim", true));
+		m.put(94, new Ingredient(94, "farinha", true));
+		m.put(95, new Ingredient(95, "bicarbonato de sódio", true));
+
+
+
 	}
 
 	public static Ingredient get(int id) {
