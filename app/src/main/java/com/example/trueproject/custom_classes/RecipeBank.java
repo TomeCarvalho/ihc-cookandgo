@@ -126,8 +126,8 @@ public class RecipeBank {
         ));
         m.put(5, new Recipe(
                 5,
-                "Copos de bolacha, morango e coco. 1 dose = 1 copo.",
-                "De aspecto guloso, estes copos de bolacha são surpreendentemente simples de fazer. Surpreenda num almoço entre amigos com esta deliciosa sobremesa.",
+                "Copos de bolacha, morango e coco.",
+                "De aspecto guloso, estes copos de bolacha são surpreendentemente simples de fazer. Surpreenda num almoço entre amigos com esta deliciosa sobremesa. 1 dose = 1 copo.",
                 "1. Dissolva o amido de milho num pouco de bebida vegetal morna."
                         + "\n2. Coloque a restante bebida vegetal num tacho, adicione o açúcar, as gemas batidas e o amido de milho dissolvido."
                         + "\n3. Junte a essência de baunilha e a casca de limão. Leve ao lume, mexendo constantemente até que a mistura fique espessa, e cozinhe por 2 minutos."
