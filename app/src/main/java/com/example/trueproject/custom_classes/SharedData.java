@@ -11,6 +11,12 @@ public class SharedData {
     public static boolean showUncookables = true;
     // public static boolean vegetarian = false; // TODO: useless?
 
+    // TODO
+    static {
+        recipeSet.addAll(RecipeBank.getAllRecipes());
+    }
+
+
     // simulate Joaquina initial data like in low fidelity prototype
     public static void loadJoaquina() {
         // necessary ingredients for 4 meals of "Carne de porco à alentejana"

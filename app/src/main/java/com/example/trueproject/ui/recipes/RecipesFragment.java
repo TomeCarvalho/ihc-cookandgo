@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -14,7 +15,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trueproject.R;
+import com.example.trueproject.custom_classes.Allergies;
 import com.example.trueproject.custom_classes.Recipe;
+import com.example.trueproject.custom_classes.SharedData;
 
 import java.util.*;
 
@@ -28,9 +31,22 @@ public class RecipesFragment extends Fragment {
         recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_recipes, container, false);
 
-        // TODO
-        // gridView = (GridView) root.findViewById(R.id.recipes_gridview);
+        gridView = (GridView) root.findViewById(R.id.fragment_recipes_gridview);
+        initRecipesGridView();
         return root;
+    }
+
+    private void initRecipesGridView() {
+        ArrayList<RecipesView> recipesViewList = new ArrayList<>();
+        for (Recipe r : SharedData.recipeSet)
+            recipesViewList.add(new RecipesView(r.getName(), r.getId()));
+
+        RecipesAdapter recipeAdapter = new RecipesAdapter(
+                getActivity().getApplicationContext(),
+                recipesViewList
+        );
+
+        gridView.setAdapter(recipeAdapter);
     }
 
     public void filterByTime() {

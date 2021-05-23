@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:layout_marginHorizontal="10dp"-->
+<!--    android:layout_marginVertical="10dp"-->
+<!--    android:columnCount="2"-->
+<!--    android:orientation="horizontal"-->
+<!--    tools:ignore="UselessParent">-->
+<!--</GridLayout>-->
+<!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:id="@+id/fragment_recipes_gridview"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="0dp">-->
+
+<!--</GridView>-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="10dp"
-    android:columnCount="2"
-    android:orientation="horizontal"
-    tools:ignore="UselessParent">
-</GridLayout>
+    tools:context=".ui.recipes.RecipesFragment">
+
+    <GridView
+        android:id="@+id/fragment_recipes_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2">
+
+    </GridView>
+</androidx.constraintlayout.widget.ConstraintLayout>
