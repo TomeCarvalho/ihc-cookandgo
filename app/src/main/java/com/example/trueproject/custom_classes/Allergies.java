@@ -11,7 +11,6 @@ public enum Allergies {
 	SOYBEANS("Soja"),
 	WHEAT("Trigo");
 
-
 	private String name;
 	private boolean selected = false;
 

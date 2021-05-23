@@ -1,4 +1,4 @@
-package com.example.trueproject.custom_classes;
+package com.example.trueproject.custom_classes; //
 
 import com.example.trueproject.BuildConfig;
 

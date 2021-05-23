@@ -1,4 +1,4 @@
-package com.example.trueproject.custom_classes;
+package com.example.trueproject.custom_classes; //
 
 public enum Unit {
 	KG("kg"),
