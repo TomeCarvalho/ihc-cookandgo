@@ -1,4 +1,4 @@
-package com.example.trueproject.ui.recipes; //
+package com.example.trueproject.ui.recipes; ///
 
 import android.content.Context;
 import android.util.Log;
