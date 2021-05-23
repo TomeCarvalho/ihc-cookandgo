@@ -9,18 +9,21 @@ public class Ingredient {
 	private String name;
 	private Allergies allergy;
 	private boolean vegetarian;
+	private Unit unit;
 
-	public Ingredient(int id, String name, boolean vegetarian, Allergies allergy) {
+	public Ingredient(int id, String name, boolean vegetarian, Unit unit, Allergies allergy) {
 		this.id = id;
 		this.name = name;
-		this.allergy = allergy;
 		this.vegetarian = vegetarian;
+		this.unit = unit;
+		this.allergy = allergy;
 	}
 
-	public Ingredient(int id, String name, boolean vegetarian) {
+	public Ingredient(int id, String name, boolean vegetarian, Unit unit) {
 		this.id = id;
 		this.name = name;
 		this.vegetarian = vegetarian;
+		this.unit = unit;
 	}
 
 	public int getId() {
@@ -37,6 +40,10 @@ public class Ingredient {
 
 	public boolean isVegetarian() {
 		return vegetarian;
+	}
+
+	public Unit getUnit() {
+		return unit;
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,19 +21,15 @@ import java.util.*;
 public class RecipesFragment extends Fragment {
     private RecipesViewModel recipesViewModel;
     private Set<Recipe> recipes = new HashSet<Recipe>();
+    private GridView gridView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        recipesViewModel =
-                new ViewModelProvider(this).get(RecipesViewModel.class);
+        recipesViewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_recipes, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        recipesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        // TODO
+        // gridView = (GridView) root.findViewById(R.id.recipes_gridview);
         return root;
     }
 

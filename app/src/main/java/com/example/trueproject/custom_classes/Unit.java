@@ -1,6 +1,7 @@
 package com.example.trueproject.custom_classes;
 
 public enum Unit {
+	KG("kg"),
 	G("g"),
 	L("L"),
 	DL("dl"),
@@ -17,5 +18,9 @@ public enum Unit {
 
 	private Unit(String name) {
 		this.name = name;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
