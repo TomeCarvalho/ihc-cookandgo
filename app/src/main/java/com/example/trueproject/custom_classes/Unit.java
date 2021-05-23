@@ -1,6 +1,7 @@
 package com.example.trueproject.custom_classes;
 
 public enum Unit {
+	KG("kg"),
 	G("g"),
 	L("L"),
 	DL("dl"),
