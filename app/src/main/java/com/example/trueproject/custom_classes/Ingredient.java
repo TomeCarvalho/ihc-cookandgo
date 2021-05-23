@@ -9,6 +9,7 @@ public class Ingredient {
 	private String name;
 	private Allergies allergy;
 	private boolean vegetarian;
+	private Unit unit = Unit.G;
 
 	public Ingredient(int id, String name, boolean vegetarian, Allergies allergy) {
 		this.id = id;
@@ -43,6 +44,8 @@ public class Ingredient {
 	public String toString () {
 		return getName();
 	}
+
+	public Unit getUnit() { return unit; }
 
 	@Override
 	public boolean equals(Object o) {

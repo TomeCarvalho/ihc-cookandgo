@@ -15,4 +15,6 @@
     <string name="soja">Soja</string>
     <string name="teste">A M O G U S</string>
     <string name="save">Guardar</string>
+    <string name="ing_qnt">Qnty</string>
+    <string name="ing_changeBy">ChangeBy</string>
 </resources>
