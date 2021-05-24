@@ -16,7 +16,6 @@ import com.example.trueproject.R;
 import java.util.*;
 
 public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
-
     public IngredientsViewAdapter(@NonNull Context context, ArrayList<IngredientsView> arrayList) {
         super(context,0,arrayList);
     }

@@ -12,7 +12,7 @@ public enum Difficulty {
         this.name = name;
         this.val = val;
     }
-
+    public String getName(){return name;}
     public int getVal() {
         return val;
     }

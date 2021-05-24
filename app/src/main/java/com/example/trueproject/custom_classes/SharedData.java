@@ -1,6 +1,10 @@
 package com.example.trueproject.custom_classes; //
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import com.example.trueproject.R;
+
 import java.util.*;
 
 public class SharedData {
@@ -9,7 +13,31 @@ public class SharedData {
     public static Set<Recipe> recipeSet = new HashSet<>();
     public static Set<IngredientQuantity> ingQtySet = new HashSet<>();
     public static boolean showUncookables = true;
-    // public static boolean vegetarian = false; // TODO: useless?
+    // public static boolean vegetarian = false; // TODO
+    public static int[] recipeImgs = new int[]{
+            R.drawable.recipe1,
+            R.drawable.recipe2,
+            R.drawable.recipe3,
+            R.drawable.recipe4,
+            R.drawable.recipe5,
+            R.drawable.recipe6,
+            R.drawable.recipe7,
+            R.drawable.recipe8,
+            R.drawable.recipe9,
+            R.drawable.recipe10,
+            R.drawable.recipe11,
+            R.drawable.recipe12,
+            R.drawable.recipe13,
+            R.drawable.recipe14,
+            R.drawable.recipe15,
+            R.drawable.recipe16,
+    };
+
+    // TODO
+    static {
+        recipeSet.addAll(RecipeBank.getAllRecipes());
+    }
+
 
     // simulate Joaquina initial data like in low fidelity prototype
     public static void loadJoaquina() {
