@@ -9,7 +9,7 @@ public class RecipesView {
 
     public RecipesView(String name, int img) {
         this.name = name;
-        this.img = R.drawable.test_img;
+        this.img = img;
     }
 
     public String getName() {

@@ -1,6 +1,9 @@
 package com.example.trueproject.ui.recipes; ///
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.R;
+import com.example.trueproject.custom_classes.SharedData;
+
 import java.util.ArrayList;
 
 public class RecipesAdapter extends ArrayAdapter<RecipesView> {
@@ -37,8 +42,17 @@ public class RecipesAdapter extends ArrayAdapter<RecipesView> {
         ImageView recipeImg = (ImageView) currentView.findViewById(R.id.recipe_card_imageview);
 
         recipeName.setText(name);
-        recipeImg.setImageResource(R.drawable.test_img); // TODO: replace with image
-
+        // recipeImg.setImageResource(R.drawable.recipe1);
+        // recipeImg.setImageURI(Uri.parse("app/src/main/res/drawable/recipe" + img + ".jpg")); // img ta cursed (2131165359)
+        // TODO: how the fuck do you get the URI?
+//        String packageName = "com.example.trueproject.ui.recipes";
+//        recipeImg.setImageURI(Uri.parse("android.resource://" + packageName + "/drawable/recipe" + img + ".jpg"));
+//        Log.i(TAG, "img: " + img);
+//        Log.i(TAG, "Uri.parse: " + Uri.parse("recipe" + img));
+        // String path = "app/src/main/res/drawable/recipe" + img + ".jpg";
+        // String path = "D:\\UA\\IHC\\ihc-cookandgo\\app\\src\\main\\res\\drawable\\recipe" + img + ".jpg";
+        // recipeImg.setImageBitmap(BitmapFactory.decodeFile(path));
+        recipeImg.setImageResource(SharedData.recipeImgs[img - 1]);
         return currentView;
     }
 }
