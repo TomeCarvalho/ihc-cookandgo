@@ -51,18 +51,19 @@ public class IngredientsFragment extends Fragment {
     }
 
     private void initIngredients() {
-        SharedData.loadJoaquina();
+        if (!SharedData.ingredientsLoaded)
+            SharedData.loadJoaquina();
+
         ArrayList<IngredientsView> arr = new ArrayList<>();
         Set<IngredientQuantity> col = SharedData.ingQtySet;
 
         for (IngredientQuantity iq : col) {
             Ingredient i = iq.getIngredient();
-            arr.add(new IngredientsView(i.getName(),String.valueOf(iq.getQuantity()),i.getUnit()));
+            arr.add(new IngredientsView(i.getName(), String.valueOf(iq.getQuantity()), i.getUnit()));
         }
 
-        IngredientsViewAdapter adap = new IngredientsViewAdapter(getActivity().getApplicationContext(),arr);
-
+        IngredientsViewAdapter adap = new IngredientsViewAdapter(getActivity().getApplicationContext(), arr);
         listView.setAdapter(adap);
-
+        SharedData.ingredientsLoaded = true;
     }
 }

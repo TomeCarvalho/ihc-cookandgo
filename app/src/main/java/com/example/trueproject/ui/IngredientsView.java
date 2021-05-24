@@ -28,6 +28,10 @@ public class IngredientsView {
         return quantity;
     }
 
+    public void setQuantity(String q) {
+        quantity = q;
+    }
+
     /*
     public String getChangeBy() {
         return changeBy;

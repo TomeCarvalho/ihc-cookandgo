@@ -1,6 +1,8 @@
 package com.example.trueproject.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.trueproject.R;
+import com.example.trueproject.custom_classes.IngredientQuantity;
+import com.example.trueproject.custom_classes.SharedData;
 
 import java.util.*;
 
@@ -43,13 +48,51 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
         TextView unit = currentItemView.findViewById(R.id.ing_unit);
         unit.setText(currentNumberPosition.getUnit().getName());
 
-        // Button minus = currentItemView.findViewById(R.id.ing_minus);
+        Button minus = currentItemView.findViewById(R.id.ing_minus);
+        EditText change = currentItemView.findViewById(R.id.ing_edit2);
+        Button plus = currentItemView.findViewById(R.id.ing_plus);
 
-        // EditText change = currentItemView.findViewById(R.id.ing_edit2);
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operation("-", change, qntd, currentNumberPosition);
+            }
+        });
 
-        // Button plus = currentItemView.findViewById(R.id.ing_plus);
+        plus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                operation("+", change, qntd, currentNumberPosition);
+            }
+        });
+
 
         return currentItemView;
+    }
+
+    public void operation(String str, EditText change, EditText qntd, IngredientsView currentNumberPosition) {
+        if (change.getText().length() <= 0) {
+            Toast toast = Toast.makeText(getContext(), R.string.toast_message, Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        double val = Double.parseDouble(currentNumberPosition.getQuantity());
+        if (str.equals("-")) val -= Double.parseDouble(change.getText().toString());
+        else if (str.equals("+")) val += Double.parseDouble(change.getText().toString());
+
+        if (val < 0) val = 0.0;
+
+        String qtd = String.valueOf(val);
+        currentNumberPosition.setQuantity(qtd);
+        qntd.setText(qtd);
+        for (IngredientQuantity ig : SharedData.ingQtySet) {
+            if (ig.getIngredient().getName().equals(currentNumberPosition.getName())) {
+                ig.setQuantity(Double.parseDouble(qtd));
+                Log.i("TAG", "houve update em " + currentNumberPosition.getName());
+            }
+            break;
+        }
+        Log.i("TAG", "change: " + change.getText());
+
     }
 
 }

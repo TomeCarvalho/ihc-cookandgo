@@ -17,4 +17,5 @@
     <string name="save">Guardar</string>
     <string name="ing_qnt">Qnty</string>
     <string name="ing_changeBy">ChangeBy</string>
+    <string name="toast_message">Por favor, insira uma quantidade a ser alterada</string>
 </resources>

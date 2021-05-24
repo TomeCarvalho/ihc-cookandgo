@@ -18,6 +18,10 @@ public class IngredientQuantity {
 		return quantity;
 	}
 
+	public void setQuantity(double q) {
+		quantity = q;
+	}
+
 //	public Unit getUnit() {
 //		return unit;
 //	}
