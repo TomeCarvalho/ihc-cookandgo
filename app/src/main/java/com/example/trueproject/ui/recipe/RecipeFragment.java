@@ -19,7 +19,7 @@ import com.example.trueproject.custom_classes.Recipe;
 public class RecipeFragment extends Fragment {
     public RecipeViewModel recipeViewModel;
     public TextView recipeView;
-    public  TextView timeView;
+    public TextView timeView;
     public TextView difView;
     public TextView ingView;
     public TextView prepView;
@@ -70,5 +70,4 @@ public class RecipeFragment extends Fragment {
 
         return root;
     }
-
 }

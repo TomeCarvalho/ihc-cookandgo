@@ -1,5 +1,7 @@
 package com.example.trueproject.custom_classes; //
 
+import android.util.Log;
+
 import java.util.Set;
 import java.util.HashSet;
 
@@ -97,22 +99,23 @@ public class Recipe {
         return true;
     }
 
-    public boolean canBeCookedWith(Set<IngredientQuantity> ingQty, int nMeals) {
-        for (IngredientQuantity iq : ingQty)
-            if (!hasEnoughOf(ingredientQuantities, iq, nMeals))
+    public boolean canBeCookedWith(Set<IngredientQuantity> ingQtys, int nMeals) {
+        String tag = "canBeCookedWith debug";
+        Log.i(tag, "canBeCookedWith called");
+        for (IngredientQuantity recipeIngQty : ingredientQuantities) {
+            if (!hasEnoughOf(recipeIngQty, ingQtys)) {
+                Log.i(tag, "recipe " + id + " cookable: false");
                 return false;
+            }
+        }
+        Log.i(tag, "recipe " + id + " cookable: true");
         return true;
     }
 
-    public boolean canBeCookedWith(Set<IngredientQuantity> ingQty) {
-        return canBeCookedWith(ingQty, 1);
-    }
-
-    private static boolean hasEnoughOf(IngredientQuantity[] arr, IngredientQuantity iq, int nMeals) {
-        for (IngredientQuantity arrIq : arr)
-            if (!(arrIq.getIngredient().equals(iq.getIngredient())
-            && arrIq.getQuantity() >= nMeals * iq.getQuantity()))
-                return false;
-        return true;
+    private static boolean hasEnoughOf(IngredientQuantity iq, Set<IngredientQuantity> ingQtys) {
+        for (IngredientQuantity ingQty : ingQtys)
+            if (ingQty.getIngredient().equals(iq.getIngredient()))
+                return (ingQty.getQuantity() >= iq.getQuantity());
+        return false;
     }
 }

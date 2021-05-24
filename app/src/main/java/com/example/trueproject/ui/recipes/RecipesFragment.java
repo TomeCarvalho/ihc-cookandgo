@@ -39,7 +39,7 @@ public class RecipesFragment extends Fragment {
     private void initRecipesGridView() {
         ArrayList<RecipesView> recipesViewList = new ArrayList<>();
         for (Recipe r : SharedData.recipeSet)
-            recipesViewList.add(new RecipesView(r.getName(), r.getId()));
+            recipesViewList.add(new RecipesView(r.getName(), r.getId(), r.canBeCookedWith(SharedData.ingQtySet, 1)));
 
         RecipesAdapter recipeAdapter = new RecipesAdapter(
                 getActivity().getApplicationContext(),

@@ -35,7 +35,11 @@ public class SharedData {
 
     // TODO
     static {
-        recipeSet.addAll(RecipeBank.getAllRecipes());
+        Collections.addAll(recipeTypeSet, RecipeType.values());
+        loadJoaquina();
+        // recipeSet.addAll(RecipeBank.getAllRecipes());
+        Log.i("SharedData", "update recipes");
+        updateRecipes(1);
     }
 
 
@@ -54,17 +58,19 @@ public class SharedData {
     }
 
     public static void selectAllRecipeTypes() {
-        for (RecipeType recipeType: RecipeType.values())
-            recipeTypeSet.add(recipeType);
+        Collections.addAll(recipeTypeSet, RecipeType.values());
     }
 
     public static void updateRecipes(int nMeals) {
+        Log.i("SharedData", "updateRecipes called");
         recipeSet = new HashSet<>();
         for (Recipe r : RecipeBank.getAllRecipes()) {
+            Log.i("SharedData", "recipe: " + r);
             if (!containsAllergy(r.getAllergies(), allergySet)
             && recipeTypeSet.contains(r.getType())
             && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
+                Log.i("SharedData", "recipe added: " + r);
             }
         }
     }
@@ -78,6 +84,6 @@ public class SharedData {
 
     public static void debugAllergies() {
         for (Allergies a : allergySet)
-            Log.i("SharedData allergy", a.getName());
+            Log.i("SharedData", a.getName());
     }
 }
