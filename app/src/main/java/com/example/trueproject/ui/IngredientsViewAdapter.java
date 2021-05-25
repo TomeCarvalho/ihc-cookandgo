@@ -84,12 +84,15 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
         String qtd = String.valueOf(val);
         currentNumberPosition.setQuantity(qtd);
         qntd.setText(qtd);
+        Log.i("TAG", "teste");
         for (IngredientQuantity ig : SharedData.ingQtySet) {
+            Log.i("TAG", "ig.getName(): " + ig.getIngredient().getName());
+            Log.i("TAG", "currentNumberPosition.getName(): " + currentNumberPosition.getName());
             if (ig.getIngredient().getName().equals(currentNumberPosition.getName())) {
                 ig.setQuantity(Double.parseDouble(qtd));
-                //Log.i("TAG", "houve update em " + currentNumberPosition.getName());
+                Log.i("TAG", "houve update em " + currentNumberPosition.getName() + " para " + ig.getQuantity());
+                break;
             }
-            break;
         }
         //Log.i("TAG", "change: " + change.getText());
 
