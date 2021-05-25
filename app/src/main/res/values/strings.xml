@@ -18,4 +18,23 @@
     <string name="ing_qnt">Qnty</string>
     <string name="ing_changeBy">ChangeBy</string>
     <string name="toast_message">Por favor, insira uma quantidade a ser alterada</string>
+    <string name="possofazer">Receitas que posso fazer</string>
+    <string name="ordenarpor">Ordenar por:</string>
+    <string name="arrowup">↑</string>
+    <string name="arrowdown">↓</string>
+    <string name="nome">Nome</string>
+    <string name="tempo">Tempo</string>
+    <string name="dif">Dificuldade</string>
+    <string name="mostrar">Mostrar apenas:</string>
+    <string name="carne">Carne</string>
+    <string name="sobremesas">Sobremesas</string>
+    <string name="facil">Fácil</string>
+    <string name="medio">Médio</string>
+    <string name="difi">Difícil</string>
+    <string name="poucotempo">&#60; 20 mins</string>
+    <string name="tempomedio">20–45 mins</string>
+    <string name="muitotempo">>45 mins</string>
+    <string name="guardar">Guardar</string>
+
+
 </resources>

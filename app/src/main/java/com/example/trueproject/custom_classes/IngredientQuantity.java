@@ -26,6 +26,10 @@ public class IngredientQuantity {
 //		return unit;
 //	}
 
+	public IngredientQuantity getForNMeals (int nMeals) {
+		return new IngredientQuantity(ingredient, quantity * nMeals);
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s: %f%s", ingredient, quantity, ingredient.getUnit());
