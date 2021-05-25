@@ -15,6 +15,7 @@ public class SharedData {
             (IngredientQuantity i1, IngredientQuantity i2) -> {
                 return i1.getIngredient().getName().compareTo(i2.getIngredient().getName());
             });
+    public static Recipe choosenRecipe = null;
     public static int nMeals = 1; // number of meals to cook
     public static boolean ingredientsLoaded = false;
     public static boolean showUncookables = true;

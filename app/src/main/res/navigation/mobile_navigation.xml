@@ -22,5 +22,9 @@
         android:name="com.example.trueproject.ui.profile.ProfileFragment"
         android:label="@string/title_perfil"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.example.trueproject.ui.recipe.RecipeFragment"
+        android:label="RecipeFragment" />
 
 </navigation>

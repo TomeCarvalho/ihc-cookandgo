@@ -36,8 +36,10 @@ public class RecipeFragment extends Fragment {
         recipeViewModel =
                 new ViewModelProvider(this).get(RecipeViewModel.class);
         View root = inflater.inflate(R.layout.recipe, container, false);
-        recipe = recipeViewModel.getRec();
+        //recipe = recipeViewModel.getRec();
         //nao sei como ir buscar a recipe mas acho que é isto, maybe??
+
+        recipe = SharedData.choosenRecipe; // fiz para o SharedData guardar a receita escolhida :)
 
         recipeNameView = (TextView) root.findViewById(R.id.recipe_name);
         recipeNameView.setText(recipe.getName());
