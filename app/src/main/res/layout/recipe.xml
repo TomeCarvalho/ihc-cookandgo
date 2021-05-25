@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ScrollView
@@ -34,7 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="3"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="0dp">
 
                 <TextView
                     android:id="@+id/timetocook"
@@ -43,15 +44,31 @@
                     android:layout_weight="1"
                     android:drawableTop="@drawable/clock"
                     android:gravity="center"
-                    android:text="10 min" />
+                    android:text="[time]" />
 
-                <TextView
-                    android:id="@+id/difficulty"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Fácil" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/difficulty"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:text="[difficulty]" />
+
+                    <TextView
+                        android:id="@+id/kcal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:text="[calories]" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -86,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="0" />
+                            android:text="[n]" />
 
                         <Button
                             android:id="@+id/increase"
@@ -95,6 +112,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="+" />
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -112,7 +130,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:text="Preparação" />
-
 
         </LinearLayout>
     </ScrollView>

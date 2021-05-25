@@ -11,9 +11,11 @@ public class SharedData {
     public static Set<Allergies> allergySet = new HashSet<>();
     public static Set<RecipeType> recipeTypeSet = new HashSet<>();
     public static Set<Recipe> recipeSet = new HashSet<>();
-    public static Set<IngredientQuantity> ingQtySet = new TreeSet<>((IngredientQuantity i1, IngredientQuantity i2) -> {
-        return i1.getIngredient().getName().compareTo(i2.getIngredient().getName());
-    });
+    public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
+            (IngredientQuantity i1, IngredientQuantity i2) -> {
+                return i1.getIngredient().getName().compareTo(i2.getIngredient().getName());
+            });
+    public static int nMeals = 1; // number of meals to cook
     public static boolean ingredientsLoaded = false;
     public static boolean showUncookables = true;
     // public static boolean vegetarian = false; // TODO
@@ -70,8 +72,8 @@ public class SharedData {
         for (Recipe r : RecipeBank.getAllRecipes()) {
             Log.i("SharedData", "recipe: " + r);
             if (!containsAllergy(r.getAllergies(), allergySet)
-            && recipeTypeSet.contains(r.getType())
-            && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
+                    && recipeTypeSet.contains(r.getType())
+                    && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
                 Log.i("SharedData", "recipe added: " + r);
             }

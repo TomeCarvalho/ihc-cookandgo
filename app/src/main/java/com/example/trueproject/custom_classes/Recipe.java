@@ -53,6 +53,17 @@ public class Recipe {
         return preparation;
     }
 
+    public IngredientQuantity[] getIngredientQuantities(int nMeals) {
+        if (nMeals == 1) // no need to loop in this case
+            return getIngredientQuantities(); // just use the no-arguments getter
+
+        int len = ingredientQuantities.length;
+        IngredientQuantity[] ret = new IngredientQuantity[len];
+        for (int i = 0; i < len; i++)
+            ret[i] = ingredientQuantities[i].getForNMeals(nMeals);
+        return ret;
+    }
+
     public IngredientQuantity[] getIngredientQuantities() {
         return ingredientQuantities;
     }
@@ -85,11 +96,11 @@ public class Recipe {
     }
 
     public String ingredientQuantitiesStr() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (IngredientQuantity i : ingredientQuantities)
-            str += i + "\n";
-        str = str.substring(0, str.length() - 1);
-        return str;
+            str.append(i).append("\n");
+        str = new StringBuilder(str.substring(0, str.length() - 1));
+        return str.toString();
     }
 
     public boolean isVegetarian() {
