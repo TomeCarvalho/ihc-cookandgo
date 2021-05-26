@@ -6,8 +6,8 @@
     android:id="@+id/recipe_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/light"
+    android:orientation="vertical"
     tools:context=".ui.recipe.RecipeFragment">
 
     <ScrollView
@@ -145,12 +145,12 @@
                 android:id="@+id/floatButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="25dp"
                 android:backgroundTint="@color/dark"
                 android:text="@string/fazer"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:layout_marginVertical="25dp"
-                android:layout_marginHorizontal="10dp"/>
+                android:textColor="@color/white" />
 
 
         </LinearLayout>

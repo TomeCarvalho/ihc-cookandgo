@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,9 @@ import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.Difficulty;
 import com.example.trueproject.custom_classes.RecipeType;
 import com.example.trueproject.custom_classes.SharedData;
+import com.example.trueproject.custom_classes.SortType;
+import com.example.trueproject.ui.recipe.RecipeFragment;
+import com.example.trueproject.ui.recipes.RecipesFragment;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class FilterFragment extends Fragment {
@@ -27,6 +33,11 @@ public class FilterFragment extends Fragment {
     private SwitchMaterial reverseSwitch;
     private GridView recipeTypesGV;
     private GridView difficultyGV;
+    private RadioButton sortName;
+    private RadioButton sortTime;
+    private RadioButton sortDifficulty;
+    private Button saveButton;
+    private CheckBox onlyCookables;
     private FilterViewModel filterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,7 +75,22 @@ public class FilterFragment extends Fragment {
         });
 
         reverseSwitch = (SwitchMaterial) root.findViewById(R.id.sort_switch);
-        SharedData.reverseSort = reverseSwitch.isSelected();
+        // SharedData.reverseSort = reverseSwitch.isSelected();
+
+        sortName = (RadioButton) root.findViewById(R.id.sort_name);
+        sortTime = (RadioButton) root.findViewById(R.id.sort_time);
+        sortDifficulty = (RadioButton) root.findViewById(R.id.sort_difficulty);
+
+        onlyCookables = (CheckBox) root.findViewById(R.id.cookable_checkbox);
+        // SharedData.showUncookables = !onlyCookables.isChecked();
+
+        saveButton = (Button) root.findViewById(R.id.filter_save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save(v);
+            }
+        });
 
         initRecipeTypesGVData();
         initDifficultiesGVData();
@@ -96,9 +122,28 @@ public class FilterFragment extends Fragment {
     }
 
     public void save(View view) {
+        SharedData.reverseSort = reverseSwitch.isChecked();
+        SharedData.showUncookables = !onlyCookables.isChecked();
+        if (sortName.isChecked())
+            // SharedData.sortByName();
+            SharedData.sortType = SortType.NAME;
+        else if (sortTime.isChecked())
+            // SharedData.sortByTime();
+            SharedData.sortType = SortType.TIME;
+        else if (sortDifficulty.isChecked())
+            // SharedData.sortByDifficulty();
+            SharedData.sortType = SortType.DIFFICULTY;
+        else
+            Log.i(TAG, "bug on save: no sort is selected");
         saveRecipeTypes(view);
         saveDifficulty(view);
+        SharedData.updateRecipes();
         Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+        // go back to recipes page
+        RecipesFragment recipesFragment = new RecipesFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.filter_constraint, recipesFragment, "findThisFragment")
+                .commit();
     }
 
     public void saveRecipeTypes(View view) {
