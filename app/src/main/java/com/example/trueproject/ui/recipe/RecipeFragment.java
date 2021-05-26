@@ -83,8 +83,8 @@ public class RecipeFragment extends Fragment {
         ForegroundColorSpan red = new ForegroundColorSpan(Color.RED);
         for (int i = 0; i < lengths.size(); i++) {
             fin = init + lengths.get(i) - 1;
-            Log.i("recipe",fin+" "+init+" "+enough.get(i));
-            spanStr.setSpan((enough.get(i) ? green : red), init, fin, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            //Log.i("recipe",fin+" "+init+" "+enough.get(i));
+            spanStr.setSpan((enough.get(i) ? new ForegroundColorSpan(Color.parseColor("#006400")) : new ForegroundColorSpan(Color.RED)), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             init = fin + 1;
         }
         ingView = (TextView) root.findViewById(R.id.ingredients);
@@ -148,15 +148,16 @@ public class RecipeFragment extends Fragment {
             sb.append(s);
         }
         SpannableString spanStr = new SpannableString(sb);
-        ForegroundColorSpan green = new ForegroundColorSpan(Color.parseColor("#006400"));
-        ForegroundColorSpan red = new ForegroundColorSpan(Color.RED);
+        //spanStr.setSpan(new ForegroundColorSpan(Color.parseColor("#006400")), 0, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //spanStr.setSpan(, 90, 110, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         for (int i = 0; i < lengths.size(); i++) {
             fin = init + lengths.get(i) - 1;
-
-            Log.i("recipe",fin+" "+init+" "+enough.get(i));
-            spanStr.setSpan((enough.get(i) ? green : red), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            //Log.i("recipe",fin+" "+init+" "+enough.get(i));
+            spanStr.setSpan((enough.get(i) ? new ForegroundColorSpan(Color.parseColor("#006400")) : new ForegroundColorSpan(Color.RED)), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             init = fin + 1;
         }
+
+
         ingView.setText(spanStr);
     }
 }
