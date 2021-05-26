@@ -19,7 +19,7 @@ public class SharedData {
     public static int nMeals = 1; // number of meals to cook
     public static boolean ingredientsLoaded = false;
     public static boolean showUncookables = true;
-    // public static boolean vegetarian = false; // TODO
+    public static boolean vegetarian = false;
     public static int[] recipeImgs = new int[]{
             R.drawable.recipe1,
             R.drawable.recipe2,
