@@ -36,7 +36,6 @@ import java.util.*;
 public class RecipesFragment extends Fragment {
     private final String TAG = "RecipesFragment";
     private RecipesViewModel recipesViewModel;
-    private Set<Recipe> recipes = new HashSet<Recipe>();
     private GridView gridView;
     public Button minusButton;
     public Button plusButton;
@@ -124,49 +123,5 @@ public class RecipesFragment extends Fragment {
         );
 
         gridView.setAdapter(recipeAdapter);
-    }
-
-    public void filterByTime() {
-        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
-            return r1.getCookingTime().compareTo(r2.getCookingTime());
-        });
-
-        tree.addAll(recipes);
-        recipes = tree;
-        showRecipes();
-    }
-
-    public void filterByName() {
-        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
-            return r1.getName().compareTo(r2.getName());
-        });
-
-        tree.addAll(recipes);
-        recipes = tree;
-        showRecipes();
-    }
-
-    public void filterByNameReversed() {
-        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
-            return r2.getName().compareTo(r1.getName());
-        });
-
-        tree.addAll(recipes);
-        recipes = tree;
-        showRecipes();
-    }
-
-    public void filterByDifficult() {
-        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) -> {
-            return r2.getDifficulty().getVal() - r1.getDifficulty().getVal();
-        });
-
-        tree.addAll(recipes);
-        recipes = tree;
-        showRecipes();
-    }
-
-    public void showRecipes() {
-        // SHOW THE RECIPES STORED
     }
 }

@@ -23,6 +23,7 @@ public class SharedData {
     public static boolean ingredientsLoaded = false;
     public static boolean showUncookables = true;
     public static boolean vegetarian = false;
+    public static boolean reverseSort = false;
     public static int[] recipeImgs = new int[]{
             R.drawable.recipe1,
             R.drawable.recipe2,
@@ -46,7 +47,7 @@ public class SharedData {
     static {
         Collections.addAll(recipeTypeSet, RecipeType.values());
         addEveryIngQty();
-        // recipeSet.addAll(RecipeBank.getAllRecipes());
+        loadJoaquina();
         Log.i("SharedData", "update recipes");
         updateRecipes(1);
     }
@@ -95,7 +96,7 @@ public class SharedData {
 
     public static void updateRecipes(int nMeals) {
         Log.i("SharedData", "updateRecipes called");
-        recipeSet = new HashSet<>();
+        recipeSet = new TreeSet<>((Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName()));
         for (Recipe r : RecipeBank.getAllRecipes()) {
             Log.i("SharedData", "recipe: " + r);
             if (!containsAllergy(r.getAllergies(), allergySet)
@@ -105,6 +106,30 @@ public class SharedData {
                 Log.i("SharedData", "recipe added: " + r);
             }
         }
+    }
+
+    public void sortByTime(boolean reverse) {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
+                (reverse ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
+
+        tree.addAll(recipeSet);
+        recipeSet = tree;
+    }
+
+    public void sortByName(boolean reverse) {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
+                (reverse ? -1 : 1) * r1.getName().compareTo(r2.getName()));
+
+        tree.addAll(recipeSet);
+        recipeSet = tree;
+    }
+
+    public void sortByDifficulty(boolean reverse) {
+        TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
+                (reverse ? -1 : 1) * r2.getDifficulty().getVal() - r1.getDifficulty().getVal());
+
+        tree.addAll(recipeSet);
+        recipeSet = tree;
     }
 
     private static boolean containsAllergy(Set<Allergies> set, Set<Allergies> userAllergies) {

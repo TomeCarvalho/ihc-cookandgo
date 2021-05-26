@@ -51,9 +51,6 @@ public class IngredientsFragment extends Fragment {
     }
 
     private void initIngredients() {
-        if (!SharedData.ingredientsLoaded)
-            SharedData.loadJoaquina();
-
         ArrayList<IngredientsView> arr = new ArrayList<>();
         Set<IngredientQuantity> col = SharedData.ingQtySet;
 

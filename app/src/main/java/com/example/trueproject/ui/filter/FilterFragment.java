@@ -20,9 +20,11 @@ import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.Difficulty;
 import com.example.trueproject.custom_classes.RecipeType;
 import com.example.trueproject.custom_classes.SharedData;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class FilterFragment extends Fragment {
     private final String TAG = "FilterFragment";
+    private SwitchMaterial reverseSwitch;
     private GridView recipeTypesGV;
     private GridView difficultyGV;
     private FilterViewModel filterViewModel;
@@ -60,6 +62,9 @@ public class FilterFragment extends Fragment {
                 difficulty.setSelected(currentCheck);
             }
         });
+
+        reverseSwitch = (SwitchMaterial) root.findViewById(R.id.sort_switch);
+        SharedData.reverseSort = reverseSwitch.isSelected();
 
         initRecipeTypesGVData();
         initDifficultiesGVData();
