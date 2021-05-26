@@ -25,7 +25,7 @@
     <string name="nome">Nome</string>
     <string name="tempo">Tempo</string>
     <string name="dif">Dificuldade</string>
-    <string name="mostrar">Mostrar apenas:</string>
+    <string name="mostrar">Filtros</string>
     <string name="carne">Carne</string>
     <string name="sobremesas">Sobremesas</string>
     <string name="facil">Fácil</string>

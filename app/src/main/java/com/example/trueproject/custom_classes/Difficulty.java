@@ -13,7 +13,16 @@ public enum Difficulty {
         this.name = name;
         this.val = val;
     }
-    public String getName(){return name;}
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
     public int getVal() {
         return val;
     }

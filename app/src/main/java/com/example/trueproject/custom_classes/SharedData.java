@@ -10,12 +10,14 @@ import java.util.*;
 public class SharedData {
     public static Set<Allergies> allergySet = new HashSet<>();
     public static Set<RecipeType> recipeTypeSet = new HashSet<>();
-    public static Set<Recipe> recipeSet = new HashSet<>();
+    public static Set<Recipe> recipeSet = new TreeSet<>(
+        (Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName())
+    );
     public static Set<Difficulty> difficultySet = new HashSet<>();
     public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
-            (IngredientQuantity i1, IngredientQuantity i2) -> {
-                return i1.getIngredient().getName().compareTo(i2.getIngredient().getName());
-            });
+            (IngredientQuantity i1, IngredientQuantity i2) ->
+                    i1.getIngredient().getName().compareTo(i2.getIngredient().getName())
+    );
     public static Recipe chosenRecipe = null;
     public static int nMeals = 1; // number of meals to cook
     public static boolean ingredientsLoaded = false;
