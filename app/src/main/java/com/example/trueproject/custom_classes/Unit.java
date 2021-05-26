@@ -6,13 +6,13 @@ public enum Unit {
 	L("L"),
 	DL("dl"),
 	ML("ml"),
-	SPOON_COFFEE(" colheres de café"),
-	SPOON_DESSERT(" colheres de sobremesa"),
-	SPOON_TEA(" colheres de chá"),
-	SPOON_SOUP(" colheres de sopa"),
-	ENOUGH(" que baste"),
-	EMB(" embalagens"),
-	UNIT(" unidades");
+	SPOON_COFFEE(" c.café"),
+	SPOON_DESSERT(" c.sobremesa"),
+	SPOON_TEA(" c.chá"),
+	SPOON_SOUP(" c.sopa"),
+	ENOUGH(" qb"),
+	EMB(" emb"),
+	UNIT(" unid");
 
 	private String name;
 

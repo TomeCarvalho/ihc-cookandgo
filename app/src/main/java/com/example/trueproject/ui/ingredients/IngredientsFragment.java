@@ -5,8 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,7 +19,9 @@ import com.example.trueproject.custom_classes.SharedData;
 import com.example.trueproject.ui.IngredientsView;
 import com.example.trueproject.ui.IngredientsViewAdapter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Set;
 
 
 public class IngredientsFragment extends Fragment {
@@ -54,14 +54,23 @@ public class IngredientsFragment extends Fragment {
         if (!SharedData.ingredientsLoaded)
             SharedData.loadJoaquina();
 
-        ArrayList<IngredientsView> arr = new ArrayList<>();
+        //ArrayList<IngredientsView> arr = new ArrayList<>();
         Set<IngredientQuantity> col = SharedData.ingQtySet;
-
+        IngredientsView[] arr2 = new IngredientsView[IngredientBank.size()];
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = new IngredientsView(IngredientBank.get(i+1).getName(), String.valueOf(0), IngredientBank.get(i+1).getUnit());
+        }
         for (IngredientQuantity iq : col) {
             Ingredient i = iq.getIngredient();
-            arr.add(new IngredientsView(i.getName(), String.valueOf(iq.getQuantity()), i.getUnit()));
+            int id = i.getId();
+            arr2[id - 1] = new IngredientsView(i.getName(), String.valueOf(iq.getQuantity()), i.getUnit());
+            //arr.add(new IngredientsView(i.getName(), String.valueOf(iq.getQuantity()), i.getUnit()));
         }
-
+        ArrayList<IngredientsView> arr = new ArrayList<IngredientsView>(Arrays.asList(arr2));
+        //for (IngredientQuantity iq : col) {
+        //    Ingredient i = iq.getIngredient();
+        //    arr.add(new IngredientsView(i.getName(), String.valueOf(iq.getQuantity()), i.getUnit()));
+        //}
         IngredientsViewAdapter adap = new IngredientsViewAdapter(getActivity().getApplicationContext(), arr);
         listView.setAdapter(adap);
         SharedData.ingredientsLoaded = true;
