@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/filter_name"
+                        android:id="@+id/sort_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -71,14 +71,14 @@
                         android:checked="true"/>
 
                     <RadioButton
-                        android:id="@+id/filter_time"
+                        android:id="@+id/sort_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
                         android:text="@string/tempo" />
 
                     <RadioButton
-                        android:id="@+id/filter_difficulty"
+                        android:id="@+id/sort_difficulty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -167,6 +167,7 @@
                 android:orientation="horizontal"></LinearLayout>
 
             <Button
+                android:id="@+id/filter_save_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

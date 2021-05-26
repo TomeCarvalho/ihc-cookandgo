@@ -24,6 +24,8 @@ public class SharedData {
     public static boolean showUncookables = true;
     public static boolean vegetarian = false;
     public static boolean reverseSort = false;
+    public static SortType sortType = SortType.NAME;
+
     public static int[] recipeImgs = new int[]{
             R.drawable.recipe1,
             R.drawable.recipe2,
@@ -49,7 +51,7 @@ public class SharedData {
         addEveryIngQty();
         loadJoaquina();
         Log.i("SharedData", "update recipes");
-        updateRecipes(1);
+        updateRecipes();
     }
 
     public static double getQuantityOf(Ingredient ingredient) {
@@ -94,9 +96,22 @@ public class SharedData {
         Collections.addAll(recipeTypeSet, RecipeType.values());
     }
 
-    public static void updateRecipes(int nMeals) {
+    public static void updateRecipes() {
         Log.i("SharedData", "updateRecipes called");
-        recipeSet = new TreeSet<>((Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName()));
+        switch (sortType) {
+            case NAME:
+                recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
+                        (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName()));
+                break;
+            case TIME:
+                recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
+                        (reverseSort ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
+                break;
+            case DIFFICULTY:
+                recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
+                        (reverseSort ? -1 : 1) * r2.getDifficulty().getVal() - r1.getDifficulty().getVal());
+        }
+
         for (Recipe r : RecipeBank.getAllRecipes()) {
             Log.i("SharedData", "recipe: " + r);
             if (!containsAllergy(r.getAllergies(), allergySet)
@@ -108,25 +123,25 @@ public class SharedData {
         }
     }
 
-    public void sortByTime(boolean reverse) {
+    public static void sortByTime() {
         TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
-                (reverse ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
+                (reverseSort ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
 
         tree.addAll(recipeSet);
         recipeSet = tree;
     }
 
-    public void sortByName(boolean reverse) {
+    public static void sortByName() {
         TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
-                (reverse ? -1 : 1) * r1.getName().compareTo(r2.getName()));
+                (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName()));
 
         tree.addAll(recipeSet);
         recipeSet = tree;
     }
 
-    public void sortByDifficulty(boolean reverse) {
+    public static void sortByDifficulty() {
         TreeSet<Recipe> tree = new TreeSet<>((Recipe r1, Recipe r2) ->
-                (reverse ? -1 : 1) * r2.getDifficulty().getVal() - r1.getDifficulty().getVal());
+                (reverseSort ? -1 : 1) * r2.getDifficulty().getVal() - r1.getDifficulty().getVal());
 
         tree.addAll(recipeSet);
         recipeSet = tree;
