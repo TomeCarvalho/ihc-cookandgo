@@ -17,12 +17,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.trueproject.R;
+import com.example.trueproject.custom_classes.Difficulty;
 import com.example.trueproject.custom_classes.RecipeType;
 import com.example.trueproject.custom_classes.SharedData;
 
 public class FilterFragment extends Fragment {
     private final String TAG = "FilterFragment";
     private GridView recipeTypesGV;
+    private GridView difficultyGV;
     private FilterViewModel filterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,7 +33,7 @@ public class FilterFragment extends Fragment {
                 new ViewModelProvider(this).get(FilterViewModel.class);
         View root = inflater.inflate(R.layout.fragment_filter, container, false);
 
-        recipeTypesGV = (GridView) root.findViewById(R.id.filter_gridview);
+        recipeTypesGV = (GridView) root.findViewById(R.id.filter_gridview_recipetypes);
         recipeTypesGV.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         recipeTypesGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,15 +42,31 @@ public class FilterFragment extends Fragment {
                 CheckedTextView v = (CheckedTextView) view;
                 boolean currentCheck = v.isChecked();
                 Log.i("isChecked", String.valueOf(currentCheck));
-                RecipeType rt = (RecipeType) recipeTypesGV.getItemAtPosition(position);
-                rt.setSelected(currentCheck);
+                RecipeType recipeType = (RecipeType) recipeTypesGV.getItemAtPosition(position);
+                recipeType.setSelected(currentCheck);
             }
         });
-        initGridViewData();
+
+        difficultyGV = (GridView) root.findViewById(R.id.filter_gridview_difficulty);
+        difficultyGV.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        difficultyGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG, "difficultyGV onItemClick: " + position);
+                CheckedTextView v = (CheckedTextView) view;
+                boolean currentCheck = v.isChecked();
+                Log.i("isChecked", String.valueOf(currentCheck));
+                Difficulty difficulty = (Difficulty) difficultyGV.getItemAtPosition(position);
+                difficulty.setSelected(currentCheck);
+            }
+        });
+
+        initRecipeTypesGVData();
+        initDifficultiesGVData();
         return root;
     }
 
-    private void initGridViewData() {
+    private void initRecipeTypesGVData() {
         RecipeType[] recipeTypes = RecipeType.values();
         ArrayAdapter<RecipeType> arrayAdapter
                 = new ArrayAdapter<>(getActivity().getApplicationContext(),
@@ -60,8 +78,22 @@ public class FilterFragment extends Fragment {
             recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
     }
 
+    private void initDifficultiesGVData() {
+        Difficulty[] difficulties = Difficulty.values();
+        ArrayAdapter<Difficulty> arrayAdapter
+                = new ArrayAdapter<>(getActivity().getApplicationContext(),
+                android.R.layout.simple_list_item_multiple_choice, difficulties);
+
+        difficultyGV.setAdapter(arrayAdapter);
+
+        for (int i = 0; i < difficulties.length; i++)
+            difficultyGV.setItemChecked(i, difficulties[i].isSelected());
+    }
+
     public void save(View view) {
         saveRecipeTypes(view);
+        saveDifficulty(view);
+        Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
     }
 
     public void saveRecipeTypes(View view) {
@@ -75,6 +107,18 @@ public class FilterFragment extends Fragment {
             else
                 SharedData.recipeTypeSet.remove(rt);
         }
-        Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+    }
+
+    public void saveDifficulty(View view) {
+        for (int i = 0; i < difficultyGV.getCount(); i++) {
+            Log.i(TAG, String.valueOf(i));
+            Difficulty difficulty = (Difficulty) difficultyGV.getItemAtPosition(i);
+            Log.i(TAG, String.valueOf(difficulty.isSelected()));
+
+            if (difficulty.isSelected())
+                SharedData.difficultySet.add(difficulty);
+            else
+                SharedData.difficultySet.remove(difficulty);
+        }
     }
 }

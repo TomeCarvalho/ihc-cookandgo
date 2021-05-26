@@ -11,6 +11,7 @@ public class SharedData {
     public static Set<Allergies> allergySet = new HashSet<>();
     public static Set<RecipeType> recipeTypeSet = new HashSet<>();
     public static Set<Recipe> recipeSet = new HashSet<>();
+    public static Set<Difficulty> difficultySet = new HashSet<>();
     public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
             (IngredientQuantity i1, IngredientQuantity i2) -> {
                 return i1.getIngredient().getName().compareTo(i2.getIngredient().getName());

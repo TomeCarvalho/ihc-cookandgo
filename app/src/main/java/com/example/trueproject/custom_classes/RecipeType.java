@@ -8,7 +8,7 @@ public enum RecipeType {
 	VEGETARIAN("Vegetariano");
 
 	private String name;
-	private boolean selected;
+	private boolean selected = false;
 
 	private RecipeType(String name) {
 		this.name = name;
