@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,8 @@ import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.IngredientQuantity;
 import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.custom_classes.SharedData;
+import com.example.trueproject.ui.IngredientsView;
+import com.example.trueproject.ui.IngredientsViewAdapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -63,7 +66,31 @@ public class RecipeFragment extends Fragment {
 
         fazer = (ExtendedFloatingActionButton) root.findViewById(R.id.floatButton);
         fazer.setText("fazer");
+        fazer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IngredientQuantity[] ingQties = recipe.getIngredientQuantities(SharedData.nMeals);
+                if(recipe.canBeCookedWith(SharedData.ingQtySet,SharedData.nMeals)){
+                    double qty;
+                    for (IngredientQuantity ingQty : ingQties) {
+                        for (IngredientQuantity ig : SharedData.ingQtySet) {
+                            if (ig.getIngredient().getName().equals(ingQty.getIngredient().getName())) {
+                                double qtd = SharedData.getQuantityOf(ig.getIngredient()) - ingQty.getQuantity();
+                                ig.setQuantity(round(qtd,2));
+                                break;
+                            }
+                        }
+                    }
+                    update();
+                }
+                else{
+                    Toast.makeText(getContext(), "Não é possível fazer esta receita.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+
+            }
+        });
         difView = (TextView) root.findViewById(R.id.difficulty);
         difView.setText(recipe.getDifficulty().getName());
 
@@ -73,7 +100,7 @@ public class RecipeFragment extends Fragment {
         List<Integer> lengths = new ArrayList<>();
         List<Boolean> enough = new ArrayList<>();
         double qty;
-        String s="Ingredientes\n";
+        String s = "Ingredientes\n";
         int init = s.length(), fin;
         sb.append(s);
         for (IngredientQuantity ingQty : ingQties) {
@@ -94,7 +121,6 @@ public class RecipeFragment extends Fragment {
         }
         ingView = (TextView) root.findViewById(R.id.ingredients);
         ingView.setText(spanStr);
-
 
 
         prepView = (TextView) root.findViewById(R.id.prep);
@@ -135,14 +161,15 @@ public class RecipeFragment extends Fragment {
 
         return root;
     }
-    public void update(){
+
+    public void update() {
         IngredientQuantity[] ingQties = recipe.getIngredientQuantities(SharedData.nMeals);
         StringBuilder sb = new StringBuilder();
 
         List<Integer> lengths = new ArrayList<>();
         List<Boolean> enough = new ArrayList<>();
         double qty;
-        String s="Ingredientes\n";
+        String s = "Ingredientes\n";
         int init = s.length(), fin;
         sb.append(s);
         for (IngredientQuantity ingQty : ingQties) {
@@ -165,4 +192,12 @@ public class RecipeFragment extends Fragment {
 
         ingView.setText(spanStr);
     }
+    private static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
+
 }
