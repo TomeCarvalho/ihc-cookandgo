@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.IngredientQuantity;
 import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.custom_classes.SharedData;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,7 @@ public class RecipeFragment extends Fragment {
     public Button minusButton;
     public Button plusButton;
     public Recipe recipe;
+    public ExtendedFloatingActionButton fazer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +61,9 @@ public class RecipeFragment extends Fragment {
         timeView = (TextView) root.findViewById(R.id.timetocook);
         timeView.setText(recipe.getCookingTime().toString());
 
+        fazer = (ExtendedFloatingActionButton) root.findViewById(R.id.floatButton);
+        fazer.setText("fazer");
+
         difView = (TextView) root.findViewById(R.id.difficulty);
         difView.setText(recipe.getDifficulty().getName());
 
@@ -67,7 +73,9 @@ public class RecipeFragment extends Fragment {
         List<Integer> lengths = new ArrayList<>();
         List<Boolean> enough = new ArrayList<>();
         double qty;
-        String s;
+        String s="Ingredientes\n";
+        int init = s.length(), fin;
+        sb.append(s);
         for (IngredientQuantity ingQty : ingQties) {
             qty = SharedData.getQuantityOf(ingQty.getIngredient());
             s = qty + "/" + ingQty.getQuantity() + ingQty.getIngredient().getUnit().getName() + " " + ingQty.getIngredient().getName() + "\n";
@@ -78,14 +86,15 @@ public class RecipeFragment extends Fragment {
         SpannableString spanStr = new SpannableString(sb);
         ForegroundColorSpan green = new ForegroundColorSpan(Color.parseColor("#006400"));
         ForegroundColorSpan red = new ForegroundColorSpan(Color.RED);
-        int init = 0, fin;
         for (int i = 0; i < lengths.size(); i++) {
             fin = init + lengths.get(i) - 1;
-            spanStr.setSpan(enough.get(i) ? green : red, init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            //Log.i("recipe",fin+" "+init+" "+enough.get(i));
+            spanStr.setSpan((enough.get(i) ? new ForegroundColorSpan(Color.parseColor("#006400")) : new ForegroundColorSpan(Color.RED)), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             init = fin + 1;
         }
         ingView = (TextView) root.findViewById(R.id.ingredients);
-        ingView.setText("Ingredientes\n" + spanStr);
+        ingView.setText(spanStr);
+
 
 
         prepView = (TextView) root.findViewById(R.id.prep);
@@ -111,6 +120,7 @@ public class RecipeFragment extends Fragment {
                     return;
                 } // else
                 nMealsView.setText(String.format("%d", --SharedData.nMeals));
+                update();
             }
         });
 
@@ -119,9 +129,40 @@ public class RecipeFragment extends Fragment {
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
                 nMealsView.setText(String.format("%d", ++SharedData.nMeals));
+                update();
             }
         });
 
         return root;
+    }
+    public void update(){
+        IngredientQuantity[] ingQties = recipe.getIngredientQuantities(SharedData.nMeals);
+        StringBuilder sb = new StringBuilder();
+
+        List<Integer> lengths = new ArrayList<>();
+        List<Boolean> enough = new ArrayList<>();
+        double qty;
+        String s="Ingredientes\n";
+        int init = s.length(), fin;
+        sb.append(s);
+        for (IngredientQuantity ingQty : ingQties) {
+            qty = SharedData.getQuantityOf(ingQty.getIngredient());
+            s = qty + "/" + ingQty.getQuantity() + ingQty.getIngredient().getUnit().getName() + " " + ingQty.getIngredient().getName() + "\n";
+            lengths.add(s.length());
+            enough.add(qty >= ingQty.getQuantity());
+            sb.append(s);
+        }
+        SpannableString spanStr = new SpannableString(sb);
+        //spanStr.setSpan(new ForegroundColorSpan(Color.parseColor("#006400")), 0, 80, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        //spanStr.setSpan(, 90, 110, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        for (int i = 0; i < lengths.size(); i++) {
+            fin = init + lengths.get(i) - 1;
+            //Log.i("recipe",fin+" "+init+" "+enough.get(i));
+            spanStr.setSpan((enough.get(i) ? new ForegroundColorSpan(Color.parseColor("#006400")) : new ForegroundColorSpan(Color.RED)), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            init = fin + 1;
+        }
+
+
+        ingView.setText(spanStr);
     }
 }

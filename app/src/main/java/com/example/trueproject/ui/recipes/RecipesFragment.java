@@ -78,6 +78,7 @@ public class RecipesFragment extends Fragment {
                     return;
                 } // else
                 nMealsView.setText(String.format("%d", --SharedData.nMeals));
+                initRecipesGridView();
             }
         });
 
@@ -86,6 +87,7 @@ public class RecipesFragment extends Fragment {
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
                 nMealsView.setText(String.format("%d", ++SharedData.nMeals));
+                initRecipesGridView();
             }
         });
         filter= (ImageButton) root.findViewById(R.id.filter);

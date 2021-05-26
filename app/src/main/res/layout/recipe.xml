@@ -141,6 +141,19 @@
                 android:layout_marginLeft="15dp"
                 android:text="Preparação" />
 
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/floatButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/dark"
+                android:text="@string/fazer"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:layout_marginVertical="25dp"
+                android:layout_marginHorizontal="10dp"/>
+
+
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
