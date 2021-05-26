@@ -7,7 +7,7 @@ public class IngredientQuantity {
 
 	public IngredientQuantity(Ingredient ingredient, double quantity) {
 		this.ingredient = ingredient;
-		this.quantity = quantity;
+		this.quantity = round(quantity, 2);
 	}
 
 	public Ingredient getIngredient() {
@@ -33,5 +33,13 @@ public class IngredientQuantity {
 	@Override
 	public String toString() {
 		return String.format("%s: %f%s", ingredient, quantity, ingredient.getUnit());
+	}
+
+	private static double round(double value, int places) {
+		if (places < 0) throw new IllegalArgumentException();
+		long factor = (long) Math.pow(10, places);
+		value = value * factor;
+		long tmp = Math.round(value);
+		return (double) tmp / factor;
 	}
 }

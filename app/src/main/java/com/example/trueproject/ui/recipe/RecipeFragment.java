@@ -70,7 +70,7 @@ public class RecipeFragment extends Fragment {
         String s;
         for (IngredientQuantity ingQty : ingQties) {
             qty = SharedData.getQuantityOf(ingQty.getIngredient());
-            s = qty + "/" + ingQty.getQuantity() + ingQty.getIngredient().getUnit() + " " + ingQty.getIngredient().getName();
+            s = qty + "/" + ingQty.getQuantity() + ingQty.getIngredient().getUnit().getName() + " " + ingQty.getIngredient().getName() + "\n";
             lengths.add(s.length());
             enough.add(qty >= ingQty.getQuantity());
             sb.append(s);
@@ -85,11 +85,11 @@ public class RecipeFragment extends Fragment {
             init = fin + 1;
         }
         ingView = (TextView) root.findViewById(R.id.ingredients);
-        ingView.setText(spanStr);
+        ingView.setText("Ingredientes\n" + spanStr);
 
 
         prepView = (TextView) root.findViewById(R.id.prep);
-        prepView.setText(recipe.getPreparation());
+        prepView.setText("Preparação\n" + recipe.getPreparation());
 
         nMealsView = (TextView) root.findViewById(R.id.num_people);
         nMealsView.setText(String.format("%d", SharedData.nMeals));
