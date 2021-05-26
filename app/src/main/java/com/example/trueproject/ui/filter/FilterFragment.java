@@ -133,7 +133,6 @@ public class FilterFragment extends Fragment {
         saveDifficulty(view);
         SharedData.updateRecipes();
         Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-
         // go back to recipes page
         RecipesFragment recipesFragment = new RecipesFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
