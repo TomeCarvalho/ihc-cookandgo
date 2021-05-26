@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/filter_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,24 +61,24 @@
             </LinearLayout>
 
             <RadioButton
+                android:id="@+id/filter_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:id="@+id/filter_name"
                 android:text="@string/nome" />
 
             <RadioButton
+                android:id="@+id/filter_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:id="@+id/filter_time"
                 android:text="@string/tempo" />
 
             <RadioButton
+                android:id="@+id/filter_difficulty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:id="@+id/filter_difficulty"
                 android:text="@string/dif" />
 
             <TextView
@@ -95,8 +95,7 @@
                 android:orientation="horizontal">
 
                 <GridView
-                    android:numColumns="3"
-                    android:id="@+id/filter_gridview"
+                    android:id="@+id/filter_gridview_recipetypes"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:layout_marginStart="16dp"
@@ -105,28 +104,27 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
+                    android:numColumns="3"
                     app:layout_constraintBottom_toTopOf="@+id/button"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-<!--                <CheckBox-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="4"-->
-<!--                    android:text="@string/carne" />-->
 
-
-<!--                <CheckBox-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="4"-->
-<!--                    android:text="@string/facil" />-->
-
-<!--                <CheckBox-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="4"-->
-<!--                    android:text="@string/poucotempo" />-->
+                <GridView
+                    android:id="@+id/filter_gridview_difficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:numColumns="3"
+                    app:layout_constraintBottom_toTopOf="@+id/button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </LinearLayout>
 
@@ -140,25 +138,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
-
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/peixe" />
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/medio" />
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/tempomedio" />
 
             </LinearLayout>
 
@@ -174,34 +153,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/sobremesas" />
-
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/difi" />
-
-
-                <CheckBox
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:text="@string/muitotempo" />
-
             </LinearLayout>
 
-            <!--<Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Outros"></Button>
-            -->
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

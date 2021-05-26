@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class ProfileFragment extends Fragment {
     public static final String TAG = "";
     private ListView listView;
     private Button button;
+    private Switch vegan;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class ProfileFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         listView = (ListView) root.findViewById(R.id.listView);
+        vegan = (Switch) root.findViewById(R.id.switch_vegan);
         button = (Button) root.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +89,8 @@ public class ProfileFragment extends Fragment {
                 SharedData.allergySet.remove(al);
         }
         SharedData.debugAllergies();
+        SharedData.vegetarian = vegan.isChecked();
+        Log.i("vegan: ", String.valueOf(vegan.isChecked()));
         Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
     }
 }

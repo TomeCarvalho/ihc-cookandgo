@@ -7,6 +7,7 @@ public enum Difficulty {
 
     private String name;
     private int val;
+    private boolean selected = false;
 
     private Difficulty(String name, int val) {
         this.name = name;
@@ -15,5 +16,13 @@ public enum Difficulty {
     public String getName(){return name;}
     public int getVal() {
         return val;
+    }
+
+    public void setSelected(boolean v) {
+        selected = v;
+    }
+
+    public boolean isSelected() {
+        return selected;
     }
 }
