@@ -88,6 +88,10 @@ public class SharedData {
         addQtyToIng(7, 100);
         addQtyToIng(8, 500);
         addQtyToIng(9, 2);
+        addQtyToIng(84,900);
+        addQtyToIng(62,6);
+        addQtyToIng(85,240);
+
     }
 
     public static void selectAllRecipeTypes() {

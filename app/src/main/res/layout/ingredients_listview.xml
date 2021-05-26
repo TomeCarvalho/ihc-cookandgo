@@ -16,13 +16,10 @@
             android:layout_weight="1"
             android:layout_marginStart="10dp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/ing_edit1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/ing_qnt"
-            android:importantForAutofill="no"
-            android:inputType="number" />
+            android:layout_height="wrap_content"/>
         <!-- tools:ignore="Autofill" -->
 
         <TextView
