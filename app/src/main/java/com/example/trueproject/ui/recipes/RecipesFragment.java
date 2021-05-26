@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +37,10 @@ public class RecipesFragment extends Fragment {
     private RecipesViewModel recipesViewModel;
     private Set<Recipe> recipes = new HashSet<Recipe>();
     private GridView gridView;
+    public Button minusButton;
+    public Button plusButton;
+    public ImageButton filter;
+    public TextView nMealsView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +70,36 @@ public class RecipesFragment extends Fragment {
             }
         });
         initRecipesGridView();
+        nMealsView = (TextView) root.findViewById(R.id.num_people);
+        nMealsView.setText(SharedData.nMeals);
+        plusButton = (Button) root.findViewById(R.id.increase);
+        minusButton = (Button) root.findViewById(R.id.decrease);
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // decrement ppView and calculate ingredient quantities
+                if (SharedData.nMeals == 1) { // prevent user from making 0 or fewer meals
+                    Toast.makeText(getContext(), "Número de refeições tem de ser 1 ou mais", Toast.LENGTH_SHORT).show();
+                    return;
+                } // else
+                nMealsView.setText(--SharedData.nMeals);
+            }
+        });
+
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //aumentar ppView e calcular ingredientes
+                nMealsView.setText(++SharedData.nMeals);
+            }
+        });
+        filter= (ImageButton) root.findViewById(R.id.filter);
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //mudar para a view dos filtros
+            }
+        });
         return root;
     }
 
