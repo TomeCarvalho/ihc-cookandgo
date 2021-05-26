@@ -39,7 +39,7 @@ public class RecipeFragment extends Fragment {
         //recipe = recipeViewModel.getRec();
         //nao sei como ir buscar a recipe mas acho que é isto, maybe??
 
-        recipe = SharedData.choosenRecipe; // fiz para o SharedData guardar a receita escolhida :)
+        recipe = SharedData.chosenRecipe; // fiz para o SharedData guardar a receita escolhida :)
 
         recipeNameView = (TextView) root.findViewById(R.id.recipe_name);
         recipeNameView.setText(recipe.getName());
@@ -73,7 +73,6 @@ public class RecipeFragment extends Fragment {
                     return;
                 } // else
                 nMealsView.setText(--SharedData.nMeals);
-                // TODO: do we need to mess with nMealsView again?
             }
         });
 
@@ -82,7 +81,6 @@ public class RecipeFragment extends Fragment {
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
                 nMealsView.setText(++SharedData.nMeals);
-                // TODO: do we need to mess with ppView again?
             }
         });
 
