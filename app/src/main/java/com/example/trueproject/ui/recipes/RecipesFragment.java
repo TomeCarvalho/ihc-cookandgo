@@ -78,6 +78,7 @@ public class RecipesFragment extends Fragment {
                     return;
                 } // else
                 nMealsView.setText(String.format("%d", --SharedData.nMeals));
+                initRecipesGridView();
             }
         });
 
@@ -86,6 +87,7 @@ public class RecipesFragment extends Fragment {
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
                 nMealsView.setText(String.format("%d", ++SharedData.nMeals));
+                initRecipesGridView();
             }
         });
         filter= (ImageButton) root.findViewById(R.id.filter);
@@ -105,7 +107,7 @@ public class RecipesFragment extends Fragment {
     private void initRecipesGridView() {
         ArrayList<RecipesView> recipesViewList = new ArrayList<>();
         for (Recipe r : SharedData.recipeSet)
-            recipesViewList.add(new RecipesView(r.getName(), r.getId(), r.canBeCookedWith(SharedData.ingQtySet, 1)));
+            recipesViewList.add(new RecipesView(r.getName(), r.getId(), r.canBeCookedWith(SharedData.ingQtySet, SharedData.nMeals)));
 
         RecipesAdapter recipeAdapter = new RecipesAdapter(
                 getActivity().getApplicationContext(),
