@@ -45,7 +45,7 @@ public class SharedData {
     // TODO
     static {
         Collections.addAll(recipeTypeSet, RecipeType.values());
-        loadJoaquina();
+        addEveryIngQty();
         // recipeSet.addAll(RecipeBank.getAllRecipes());
         Log.i("SharedData", "update recipes");
         updateRecipes(1);
@@ -58,18 +58,35 @@ public class SharedData {
         return 0;
     }
 
+    public static void addEveryIngQty() {
+        for (Ingredient ing : IngredientBank.getAllIngredients())
+            ingQtySet.add(new IngredientQuantity(ing, 0));
+    }
+
+    public static void addQtyToIng(Ingredient ing, double quantity) {
+        for (IngredientQuantity ingQty : ingQtySet)
+            if (ing.getId() == ingQty.getIngredient().getId())
+                ingQty.addQuantity(quantity);
+    }
+
+    public static void addQtyToIng(int id, double quantity) {
+        for (IngredientQuantity ingQty : ingQtySet)
+            if (id == ingQty.getIngredient().getId())
+                ingQty.addQuantity(quantity);
+    }
+
     // simulate Joaquina initial data like in low fidelity prototype
     public static void loadJoaquina() {
         // necessary ingredients for 4 meals of "Carne de porco à alentejana"
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(1), 800));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(2), 3));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(3), 1));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(4), 1));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(5), 2.5));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(6), 2.5));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(7), 100));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(8), 500));
-        ingQtySet.add(new IngredientQuantity(IngredientBank.get(9), 2));
+        addQtyToIng(1, 800);
+        addQtyToIng(2, 3);
+        addQtyToIng(3, 1);
+        addQtyToIng(4, 1);
+        addQtyToIng(5, 2.5);
+        addQtyToIng(6, 2.5);
+        addQtyToIng(7, 100);
+        addQtyToIng(8, 500);
+        addQtyToIng(9, 2);
     }
 
     public static void selectAllRecipeTypes() {

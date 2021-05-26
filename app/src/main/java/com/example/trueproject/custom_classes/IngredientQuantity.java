@@ -3,7 +3,6 @@ package com.example.trueproject.custom_classes; //
 public class IngredientQuantity {
 	private Ingredient ingredient;
 	private double quantity;
-	// private Unit unit;
 
 	public IngredientQuantity(Ingredient ingredient, double quantity) {
 		this.ingredient = ingredient;
@@ -22,9 +21,9 @@ public class IngredientQuantity {
 		quantity = q;
 	}
 
-//	public Unit getUnit() {
-//		return unit;
-//	}
+	public void addQuantity(double amount) {
+		quantity += amount;
+	}
 
 	public IngredientQuantity getForNMeals (int nMeals) {
 		return new IngredientQuantity(ingredient, quantity * nMeals);

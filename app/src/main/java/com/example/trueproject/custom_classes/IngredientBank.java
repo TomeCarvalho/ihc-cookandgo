@@ -1,5 +1,6 @@
 package com.example.trueproject.custom_classes; //
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -118,6 +119,10 @@ public class IngredientBank {
 		m.put(93, new Ingredient(93, "manteiga de amendoim", true, Unit.G));
 		m.put(94, new Ingredient(94, "farinha", true, Unit.G));
 		m.put(95, new Ingredient(95, "bicarbonato de sódio", true, Unit.SPOON_TEA));
+	}
+
+	public static Collection<Ingredient> getAllIngredients() {
+		return m.values();
 	}
 
 	public static Ingredient get(int id) {
