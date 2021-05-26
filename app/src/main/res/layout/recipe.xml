@@ -27,10 +27,17 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="15dp"
                 android:gravity="center_horizontal"
-                android:text="@string/title_recipe"
+                android:text="[recipe name]"
                 android:textSize="10pt"
                 tools:layout_editor_absoluteX="45dp"
                 tools:layout_editor_absoluteY="100dp" />
+
+            <ImageView
+                android:id="@+id/recipe_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/recipe_image"
+                android:padding="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

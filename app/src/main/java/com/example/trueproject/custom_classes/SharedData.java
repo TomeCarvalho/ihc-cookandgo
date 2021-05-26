@@ -48,6 +48,12 @@ public class SharedData {
         updateRecipes(1);
     }
 
+    public static double getQuantityOf(Ingredient ingredient) {
+        for (IngredientQuantity ingQty : ingQtySet)
+            if (ingQty.getIngredient().getId() == ingredient.getId())
+                return ingQty.getQuantity();
+        return 0;
+    }
 
     // simulate Joaquina initial data like in low fidelity prototype
     public static void loadJoaquina() {

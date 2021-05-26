@@ -1,5 +1,7 @@
 package com.example.trueproject.ui.recipes;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,8 +49,17 @@ public class RecipesFragment extends Fragment {
                 RecipesView r = (RecipesView) recipesView;
                 Log.i(TAG, "onItemClick: " + r.getName());
                 SharedData.chosenRecipe = RecipeBank.getRecipe(r.getImg());
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.mobile_navigation);
-                navController.navigate(R.id.recipe_linear_layout);
+//                NavController navController = Navigation.findNavController(requireActivity(), R.id.mobile_navigation);
+//                navController.navigate(R.id.recipe_linear_layout);
+                Log.i(TAG, "onItemClick: trying getActivity");
+                Activity a = getActivity();
+                Log.i(TAG, "onItemClick: after getActivity");
+                FragmentManager fragMan = a.getFragmentManager();
+                Log.i(TAG, "onItemClick: after getFragmentManager");
+//                FragmentManager fragMan = getActivity().getSupportFragmentManager();
+//                fragMan.beginTransaction()
+//                .add(R.id.recipe_linear_layout, new RecipeFragment())
+//                .commit();
             }
         });
         initRecipesGridView();

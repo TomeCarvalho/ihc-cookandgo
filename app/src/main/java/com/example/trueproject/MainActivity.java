@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         // navView.setItemIconTintList(ColorStateList.valueOf(Color.parseColor("#FFF")));
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_recipes, R.id.nav_ingredients, R.id.nav_profile, R.id.nav_recipe)
+                R.id.nav_recipes, R.id.nav_ingredients, R.id.nav_profile, R.id.nav_recipe
+                , R.id.mobile_navigation, R.id.nav_recipe, R.id.recipe_linear_layout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
