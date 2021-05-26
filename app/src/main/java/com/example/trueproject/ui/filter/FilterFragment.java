@@ -104,9 +104,13 @@ public class FilterFragment extends Fragment {
                 android.R.layout.simple_list_item_multiple_choice, recipeTypes);
 
         recipeTypesGV.setAdapter(arrayAdapter);
-
-        for (int i = 0; i < recipeTypes.length; i++)
-            recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
+        RecipeType rt;
+        for (int i = 0; i < recipeTypes.length; i++) {
+            recipeTypesGV.setItemChecked(i, true);
+            rt = (RecipeType) recipeTypesGV.getItemAtPosition(i);
+            rt.setSelected(true);
+        }
+            // recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
     }
 
     private void initDifficultiesGVData() {
@@ -116,9 +120,13 @@ public class FilterFragment extends Fragment {
                 android.R.layout.simple_list_item_multiple_choice, difficulties);
 
         difficultyGV.setAdapter(arrayAdapter);
-
-        for (int i = 0; i < difficulties.length; i++)
-            difficultyGV.setItemChecked(i, difficulties[i].isSelected());
+        Difficulty difficulty;
+        for (int i = 0; i < difficulties.length; i++) {
+            difficultyGV.setItemChecked(i, true);
+            difficulty = (Difficulty) difficultyGV.getItemAtPosition(i);
+            difficulty.setSelected(true);
+        }
+            // difficultyGV.setItemChecked(i, difficulties[i].isSelected());
     }
 
     public void save(View view) {
