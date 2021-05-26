@@ -77,7 +77,7 @@ public class RecipesFragment extends Fragment {
         });
         initRecipesGridView();
         nMealsView = (TextView) root.findViewById(R.id.num_people);
-        nMealsView.setText(SharedData.nMeals);
+        nMealsView.setText(String.format("%d", SharedData.nMeals));
         plusButton = (Button) root.findViewById(R.id.increase);
         minusButton = (Button) root.findViewById(R.id.decrease);
         minusButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class RecipesFragment extends Fragment {
                     Toast.makeText(getContext(), "Número de refeições tem de ser 1 ou mais", Toast.LENGTH_SHORT).show();
                     return;
                 } // else
-                nMealsView.setText(--SharedData.nMeals);
+                nMealsView.setText(String.format("%d", --SharedData.nMeals));
             }
         });
 
@@ -96,7 +96,7 @@ public class RecipesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
-                nMealsView.setText(++SharedData.nMeals);
+                nMealsView.setText(String.format("%d", ++SharedData.nMeals));
             }
         });
         filter= (ImageButton) root.findViewById(R.id.filter);

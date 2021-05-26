@@ -92,10 +92,10 @@ public class RecipeFragment extends Fragment {
         prepView.setText(recipe.getPreparation());
 
         nMealsView = (TextView) root.findViewById(R.id.num_people);
-        nMealsView.setText(SharedData.nMeals);
+        nMealsView.setText(String.format("%d", SharedData.nMeals));
 
         kcalView = (TextView) root.findViewById(R.id.kcal);
-        kcalView.setText(recipe.getCalories());
+        kcalView.setText(String.format("%d", recipe.getCalories()));
 
         imageView = (ImageView) root.findViewById(R.id.recipe_image_view);
         imageView.setImageResource(SharedData.recipeImgs[recipe.getId() - 1]);
@@ -110,7 +110,7 @@ public class RecipeFragment extends Fragment {
                     Toast.makeText(getContext(), "Número de refeições tem de ser 1 ou mais", Toast.LENGTH_SHORT).show();
                     return;
                 } // else
-                nMealsView.setText(--SharedData.nMeals);
+                nMealsView.setText(String.format("%d", --SharedData.nMeals));
             }
         });
 
@@ -118,7 +118,7 @@ public class RecipeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //aumentar ppView e calcular ingredientes
-                nMealsView.setText(++SharedData.nMeals);
+                nMealsView.setText(String.format("%d", ++SharedData.nMeals));
             }
         });
 
