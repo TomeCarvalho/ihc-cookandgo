@@ -42,7 +42,7 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
         name.setText(currentNumberPosition.getName());
 
         // Obter a view para o edit
-        EditText qntd = currentItemView.findViewById(R.id.ing_edit1);
+        TextView qntd = currentItemView.findViewById(R.id.ing_edit1);
         qntd.setText(currentNumberPosition.getQuantity());
 
         TextView unit = currentItemView.findViewById(R.id.ing_unit);
@@ -69,7 +69,7 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
         return currentItemView;
     }
 
-    public void operation(String str, EditText change, EditText qntd, IngredientsView currentNumberPosition) {
+    public void operation(String str, EditText change, TextView qntd, IngredientsView currentNumberPosition) {
         if (change.getText().length() <= 0) {
             Toast toast = Toast.makeText(getContext(), R.string.toast_message, Toast.LENGTH_SHORT);
             toast.show();
