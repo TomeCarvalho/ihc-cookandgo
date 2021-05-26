@@ -11,7 +11,7 @@ public class SharedData {
     public static Set<Allergies> allergySet = new HashSet<>();
     public static Set<RecipeType> recipeTypeSet = new HashSet<>();
     public static Set<Recipe> recipeSet = new TreeSet<>(
-        (Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName())
+            (Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName())
     );
     public static Set<Difficulty> difficultySet = new HashSet<>();
     public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
@@ -98,18 +98,27 @@ public class SharedData {
 
     public static void updateRecipes() {
         Log.i("SharedData", "updateRecipes called");
+        Log.i("SharedData", "updateRecipes reverseSort: " + reverseSort);
+        Log.i("SharedData", "updateRecipes sortType: " + sortType);
         switch (sortType) {
             case NAME:
+                Log.i("SharedData", "updateRecipes: case NAME");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
                         (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName()));
                 break;
             case TIME:
+                Log.i("SharedData", "updateRecipes: case TIME");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
-                        (reverseSort ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
+                        r1.getCookingTime().compareTo(r2.getCookingTime()) == 0 ?
+                                (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName())
+                                : (reverseSort ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
                 break;
             case DIFFICULTY:
+                Log.i("SharedData", "updateRecipes: case DIFFICULTY");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
-                        (reverseSort ? -1 : 1) * r2.getDifficulty().getVal() - r1.getDifficulty().getVal());
+                        r1.getDifficulty().getVal() - r2.getDifficulty().getVal() == 0 ?
+                                (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName())
+                                : (reverseSort ? -1 : 1) * r1.getDifficulty().getVal() - r2.getDifficulty().getVal());
         }
 
         for (Recipe r : RecipeBank.getAllRecipes()) {

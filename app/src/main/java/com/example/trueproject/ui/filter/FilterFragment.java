@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -36,6 +37,7 @@ public class FilterFragment extends Fragment {
     private RadioButton sortTime;
     private RadioButton sortDifficulty;
     private Button saveButton;
+    private CheckBox onlyCookables;
     private FilterViewModel filterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -73,11 +75,14 @@ public class FilterFragment extends Fragment {
         });
 
         reverseSwitch = (SwitchMaterial) root.findViewById(R.id.sort_switch);
-        SharedData.reverseSort = reverseSwitch.isSelected();
+        // SharedData.reverseSort = reverseSwitch.isSelected();
 
         sortName = (RadioButton) root.findViewById(R.id.sort_name);
         sortTime = (RadioButton) root.findViewById(R.id.sort_time);
         sortDifficulty = (RadioButton) root.findViewById(R.id.sort_difficulty);
+
+        onlyCookables = (CheckBox) root.findViewById(R.id.cookable_checkbox);
+        // SharedData.showUncookables = !onlyCookables.isChecked();
 
         saveButton = (Button) root.findViewById(R.id.filter_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -117,14 +122,15 @@ public class FilterFragment extends Fragment {
     }
 
     public void save(View view) {
-        SharedData.reverseSort = reverseSwitch.isSelected();
-        if (sortName.isSelected())
+        SharedData.reverseSort = reverseSwitch.isChecked();
+        SharedData.showUncookables = !onlyCookables.isChecked();
+        if (sortName.isChecked())
             // SharedData.sortByName();
             SharedData.sortType = SortType.NAME;
-        else if (sortTime.isSelected())
+        else if (sortTime.isChecked())
             // SharedData.sortByTime();
             SharedData.sortType = SortType.TIME;
-        else if (sortDifficulty.isSelected())
+        else if (sortDifficulty.isChecked())
             // SharedData.sortByDifficulty();
             SharedData.sortType = SortType.DIFFICULTY;
         else
