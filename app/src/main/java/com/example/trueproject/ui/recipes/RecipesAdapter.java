@@ -48,48 +48,6 @@ public class RecipesAdapter extends ArrayAdapter<RecipesView> {
         TextView recipeName = (TextView) currentView.findViewById(R.id.recipe_card_textview);
         ImageView recipeImg = (ImageView) currentView.findViewById(R.id.recipe_card_imageview);
 
-
-//        linLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // String name = recipeName.getText().toString();
-//
-//                // recipes' int img is the same as the id
-//                SharedData.chosenRecipe = RecipeBank.getRecipe(recipesView.getImg());
-//                Log.i("Recipe", recipesView.getName());
-////                fragMan.beginTransaction()
-////                        .add(R.id.recipe_linear_layout, new RecipeFragment())
-////                        .commit();
-//
-////                NavController navController = Navigation.findNavController(activity, R.id.mobile_navigation);
-////                navController.navigate(R.id.recipe_linear_layout);
-//
-//
-////                ((FragmentActivity) mContext)
-////                ((FragmentActivity) getContext())
-////                        .getSupportFragmentManager()
-////                        .beginTransaction()
-////                        .add(R.id.recipe_linear_layout, new RecipeFragment())
-////                        .commit();
-////                for (Recipe r : SharedData.recipeSet) {
-////                    if (r.getName().equals(name)) {
-////                        SharedData.choosenRecipe = r;
-////                        Log.i("Recipe", r.getName());
-////
-////                        //NavController navController = Navigation.findNavController(R.id.mobile_navigation);
-////                        //navController.navigate(R.id);
-////                        //Intent intent = new Intent(getContext(), RecipeFragment.class);
-////                        //getContext().startActivity(intent);
-////                        break;
-////                    }
-////                }
-//            }
-//        });
-
-
-//        boolean cookable = RecipeBank.getRecipe(recipe.getImg()).canBeCookedWith(SharedData.ingQtySet);
-//        Log.i(TAG, "recipe " + recipe.getImg() + " cookable: " + cookable);
-
         recipeName.setTextColor(recipesView.getColor());
         recipeName.setText(recipesView.getName());
         recipeImg.setImageResource(SharedData.recipeImgs[recipesView.getImg() - 1]);
