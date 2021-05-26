@@ -22,11 +22,66 @@
     android:layout_height="match_parent"
     tools:context=".ui.recipes.RecipesFragment">
 
-    <GridView
-        android:id="@+id/fragment_recipes_gridview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2">
+        android:orientation="vertical">
 
-    </GridView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/decrease"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/num_people"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="[n]" />
+
+            <Button
+                android:id="@+id/increase"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="+" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4" />
+
+            <ImageButton
+                android:id="@+id/filter"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@color/dark"
+                android:gravity="center"
+                android:src="@drawable/filter" />
+
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/fragment_recipes_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2">
+
+        </GridView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
