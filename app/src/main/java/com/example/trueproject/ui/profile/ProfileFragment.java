@@ -32,17 +32,17 @@ public class ProfileFragment extends Fragment {
                 new ViewModelProvider(this).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        this.listView = (ListView) root.findViewById(R.id.listView);
-        this.button = (Button) root.findViewById(R.id.button);
-        this.button.setOnClickListener(new View.OnClickListener() {
+        listView = (ListView) root.findViewById(R.id.listView);
+        button = (Button) root.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 save(view);
             }
         });
-        this.listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i(TAG, "onItemClick: " + position);
@@ -68,10 +68,10 @@ public class ProfileFragment extends Fragment {
                 = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_multiple_choice, als);
 
-        this.listView.setAdapter(arrayAdapter);
+        listView.setAdapter(arrayAdapter);
 
         for (int i = 0; i < als.length; i++)
-            this.listView.setItemChecked(i, als[i].isSelected());
+            listView.setItemChecked(i, als[i].isSelected());
     }
 
     public void save(View view) {

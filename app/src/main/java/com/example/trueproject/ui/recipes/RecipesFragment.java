@@ -28,6 +28,7 @@ import com.example.trueproject.custom_classes.Allergies;
 import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.custom_classes.RecipeBank;
 import com.example.trueproject.custom_classes.SharedData;
+import com.example.trueproject.ui.filter.FilterFragment;
 import com.example.trueproject.ui.recipe.RecipeFragment;
 
 import java.util.*;
@@ -61,18 +62,6 @@ public class RecipesFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_recipes_constraint, recipeFragment, "findThisFragment")
                         .commit();
-
-//                NavController navController = Navigation.findNavController(requireActivity(), R.id.mobile_navigation);
-//                navController.navigate(R.id.recipe_linear_layout);
-//                Log.i(TAG, "onItemClick: trying getActivity");
-//                Activity a = getActivity();
-//                Log.i(TAG, "onItemClick: after getActivity");
-//                FragmentManager fragMan = a.getFragmentManager();
-//                Log.i(TAG, "onItemClick: after getFragmentManager");
-//                FragmentManager fragMan = getActivity().getSupportFragmentManager();
-//                fragMan.beginTransaction()
-//                .add(R.id.recipe_linear_layout, new RecipeFragment())
-//                .commit();
             }
         });
         initRecipesGridView();
@@ -104,6 +93,10 @@ public class RecipesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //mudar para a view dos filtros
+                FilterFragment filterFragment = new FilterFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_recipes_constraint, filterFragment, "findThisFragment")
+                        .commit();
             }
         });
         return root;
