@@ -114,7 +114,7 @@ public class Recipe {
         String tag = "canBeCookedWith debug";
         Log.i(tag, "canBeCookedWith called");
         for (IngredientQuantity recipeIngQty : ingredientQuantities) {
-            if (!hasEnoughOf(recipeIngQty, ingQtys)) {
+            if (!hasEnoughOf(recipeIngQty, ingQtys,nMeals)) {
                 Log.i(tag, "recipe " + id + " cookable: false");
                 return false;
             }
@@ -123,10 +123,10 @@ public class Recipe {
         return true;
     }
 
-    private static boolean hasEnoughOf(IngredientQuantity iq, Set<IngredientQuantity> ingQtys) {
+    private static boolean hasEnoughOf(IngredientQuantity iq, Set<IngredientQuantity> ingQtys, int nMeals) {
         for (IngredientQuantity ingQty : ingQtys)
             if (ingQty.getIngredient().equals(iq.getIngredient()))
-                return (ingQty.getQuantity() >= iq.getQuantity());
+                return (ingQty.getQuantity() >= iq.getQuantity()*nMeals);
         return false;
     }
 }
