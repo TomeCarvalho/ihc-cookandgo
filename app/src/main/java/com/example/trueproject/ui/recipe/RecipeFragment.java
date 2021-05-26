@@ -25,6 +25,7 @@ import com.example.trueproject.R;
 import com.example.trueproject.custom_classes.IngredientQuantity;
 import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.custom_classes.SharedData;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class RecipeFragment extends Fragment {
     public Button minusButton;
     public Button plusButton;
     public Recipe recipe;
+    public ExtendedFloatingActionButton fazer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +60,9 @@ public class RecipeFragment extends Fragment {
 
         timeView = (TextView) root.findViewById(R.id.timetocook);
         timeView.setText(recipe.getCookingTime().toString());
+
+        fazer = (ExtendedFloatingActionButton) root.findViewById(R.id.floatButton);
+        fazer.setText("fazer");
 
         difView = (TextView) root.findViewById(R.id.difficulty);
         difView.setText(recipe.getDifficulty().getName());
