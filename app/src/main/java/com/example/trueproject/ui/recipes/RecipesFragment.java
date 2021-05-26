@@ -49,13 +49,19 @@ public class RecipesFragment extends Fragment {
                 RecipesView r = (RecipesView) recipesView;
                 Log.i(TAG, "onItemClick: " + r.getName());
                 SharedData.chosenRecipe = RecipeBank.getRecipe(r.getImg());
+
+                RecipeFragment recipeFragment = new RecipeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_recipes_constraint, recipeFragment, "findThisFragment")
+                        .commit();
+
 //                NavController navController = Navigation.findNavController(requireActivity(), R.id.mobile_navigation);
 //                navController.navigate(R.id.recipe_linear_layout);
-                Log.i(TAG, "onItemClick: trying getActivity");
-                Activity a = getActivity();
-                Log.i(TAG, "onItemClick: after getActivity");
-                FragmentManager fragMan = a.getFragmentManager();
-                Log.i(TAG, "onItemClick: after getFragmentManager");
+//                Log.i(TAG, "onItemClick: trying getActivity");
+//                Activity a = getActivity();
+//                Log.i(TAG, "onItemClick: after getActivity");
+//                FragmentManager fragMan = a.getFragmentManager();
+//                Log.i(TAG, "onItemClick: after getFragmentManager");
 //                FragmentManager fragMan = getActivity().getSupportFragmentManager();
 //                fragMan.beginTransaction()
 //                .add(R.id.recipe_linear_layout, new RecipeFragment())
