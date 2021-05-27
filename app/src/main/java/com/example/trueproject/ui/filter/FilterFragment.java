@@ -106,9 +106,9 @@ public class FilterFragment extends Fragment {
         recipeTypesGV.setAdapter(arrayAdapter);
         RecipeType rt;
         for (int i = 0; i < recipeTypes.length; i++) {
-            recipeTypesGV.setItemChecked(i, true);
             rt = (RecipeType) recipeTypesGV.getItemAtPosition(i);
-            rt.setSelected(true);
+            recipeTypesGV.setItemChecked(i, rt.isSelected());
+            // rt.setSelected(true);
         }
             // recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
     }
@@ -122,9 +122,9 @@ public class FilterFragment extends Fragment {
         difficultyGV.setAdapter(arrayAdapter);
         Difficulty difficulty;
         for (int i = 0; i < difficulties.length; i++) {
-            difficultyGV.setItemChecked(i, true);
             difficulty = (Difficulty) difficultyGV.getItemAtPosition(i);
-            difficulty.setSelected(true);
+            difficultyGV.setItemChecked(i, difficulty.isSelected());
+            // difficulty.setSelected(true);
         }
             // difficultyGV.setItemChecked(i, difficulties[i].isSelected());
     }
