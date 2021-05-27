@@ -75,13 +75,27 @@ public class FilterFragment extends Fragment {
         });
 
         reverseSwitch = (SwitchMaterial) root.findViewById(R.id.sort_switch);
-        // SharedData.reverseSort = reverseSwitch.isSelected();
+        reverseSwitch.setChecked(SharedData.reverseSort);
 
         sortName = (RadioButton) root.findViewById(R.id.sort_name);
         sortTime = (RadioButton) root.findViewById(R.id.sort_time);
         sortDifficulty = (RadioButton) root.findViewById(R.id.sort_difficulty);
 
+        RadioButton rb = null;
+        switch (SharedData.sortType) {
+            case NAME:
+                rb = sortName;
+                break;
+            case TIME:
+                rb = sortTime;
+                break;
+            case DIFFICULTY:
+                rb = sortDifficulty;
+        }
+        rb.setChecked(true);
+
         onlyCookables = (CheckBox) root.findViewById(R.id.cookable_checkbox);
+        onlyCookables.setChecked(!SharedData.showUncookables);
         // SharedData.showUncookables = !onlyCookables.isChecked();
 
         saveButton = (Button) root.findViewById(R.id.filter_save_button);
