@@ -96,7 +96,6 @@ public class FilterFragment extends Fragment {
 
         onlyCookables = (CheckBox) root.findViewById(R.id.cookable_checkbox);
         onlyCookables.setChecked(!SharedData.showUncookables);
-        // SharedData.showUncookables = !onlyCookables.isChecked();
 
         saveButton = (Button) root.findViewById(R.id.filter_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -122,9 +121,7 @@ public class FilterFragment extends Fragment {
         for (int i = 0; i < recipeTypes.length; i++) {
             rt = (RecipeType) recipeTypesGV.getItemAtPosition(i);
             recipeTypesGV.setItemChecked(i, rt.isSelected());
-            // rt.setSelected(true);
         }
-            // recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
     }
 
     private void initDifficultiesGVData() {
@@ -138,22 +135,17 @@ public class FilterFragment extends Fragment {
         for (int i = 0; i < difficulties.length; i++) {
             difficulty = (Difficulty) difficultyGV.getItemAtPosition(i);
             difficultyGV.setItemChecked(i, difficulty.isSelected());
-            // difficulty.setSelected(true);
         }
-            // difficultyGV.setItemChecked(i, difficulties[i].isSelected());
     }
 
     public void save(View view) {
         SharedData.reverseSort = reverseSwitch.isChecked();
         SharedData.showUncookables = !onlyCookables.isChecked();
         if (sortName.isChecked())
-            // SharedData.sortByName();
             SharedData.sortType = SortType.NAME;
         else if (sortTime.isChecked())
-            // SharedData.sortByTime();
             SharedData.sortType = SortType.TIME;
         else if (sortDifficulty.isChecked())
-            // SharedData.sortByDifficulty();
             SharedData.sortType = SortType.DIFFICULTY;
         else
             Log.i(TAG, "bug on save: no sort is selected");
