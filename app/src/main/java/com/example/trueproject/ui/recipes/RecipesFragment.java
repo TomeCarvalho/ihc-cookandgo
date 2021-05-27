@@ -100,6 +100,8 @@ public class RecipesFragment extends Fragment {
                         .commit();
             }
         });
+        SharedData.updateRecipes();
+        Log.i("RecipesFragment", "FUI CRIADO :)");
         return root;
     }
 

@@ -92,6 +92,7 @@ public class ProfileFragment extends Fragment {
         SharedData.vegetarian = vegan.isChecked();
         Log.i("vegan: ", String.valueOf(vegan.isChecked()));
         Toast.makeText(getActivity().getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+        SharedData.updateRecipes();
     }
 }
 

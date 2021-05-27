@@ -128,6 +128,9 @@ public class SharedData {
 
         for (Recipe r : RecipeBank.getAllRecipes()) {
             Log.i("SharedData", "recipe: " + r);
+            Log.i("SharedData", "getAllergies: " + r.getAllergies());
+            Log.i("SharedData", "allergieSet: " + allergySet);
+            Log.i("SharedData", "contains: " + !containsAllergy(r.getAllergies(), allergySet));
             if (!containsAllergy(r.getAllergies(), allergySet)
                     && recipeTypeSet.contains(r.getType())
                     && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
@@ -163,6 +166,7 @@ public class SharedData {
 
     private static boolean containsAllergy(Set<Allergies> set, Set<Allergies> userAllergies) {
         set.retainAll(userAllergies); // intersection
+        Log.i("containsAllergy", "" + set);
         return (set.size() > 0);
     }
 
