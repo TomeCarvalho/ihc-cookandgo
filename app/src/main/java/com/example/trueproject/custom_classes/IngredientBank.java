@@ -19,7 +19,7 @@ public class IngredientBank {
 		m.put(8, new Ingredient(8, "amêijoas frescas", false, Unit.G, Allergies.SHELLFISH));
 		m.put(9, new Ingredient(9, "coentros picados", true, Unit.SPOON_SOUP));
 
-		m.put(10, new Ingredient(10, "dourada Costa da Madeira", false, Unit.G));
+		m.put(10, new Ingredient(10, "dourada Costa da Madeira", false, Unit.G,Allergies.FISH));
 		m.put(11, new Ingredient(11, "mostarda", true, Unit.SPOON_TEA));
 		m.put(12, new Ingredient(12, "limão", true, Unit.UNIT));
 		m.put(13, new Ingredient(13, "salsa picada", true, Unit.SPOON_SOUP));
@@ -31,7 +31,7 @@ public class IngredientBank {
 		m.put(18, new Ingredient(18, "pimenta-de-caiena", true, Unit.SPOON_COFFEE));
 		m.put(19, new Ingredient(19, "sementes de sésamo", true, Unit.SPOON_SOUP));
 		m.put(20, new Ingredient(20, "sementes de chia", true, Unit.SPOON_DESSERT));
-		m.put(21, new Ingredient(21, "lombo de atum", false, Unit.G));
+		m.put(21, new Ingredient(21, "lombo de atum", false, Unit.G,Allergies.FISH));
 		m.put(22, new Ingredient(22, "tagliatelle", true, Unit.G));
 		m.put(23, new Ingredient(23, "spaghetti courgette", true, Unit.G));
 		m.put(24, new Ingredient(24, "rúcula", true, Unit.G));
@@ -82,13 +82,13 @@ public class IngredientBank {
 		m.put(64, new Ingredient(64, "pinhões", true, Unit.G));
 		m.put(65, new Ingredient(65, "malagueta", true, Unit.UNIT));
 
-		m.put(66, new Ingredient(66, "salongo", false, Unit.KG));
+		m.put(66, new Ingredient(66, "salongo", false, Unit.KG,Allergies.FISH));
 		m.put(67, new Ingredient(67, "cebola", true, Unit.UNIT));
-		m.put(68, new Ingredient(68, "filete de peixe-espada-preto", false, Unit.G));
+		m.put(68, new Ingredient(68, "filete de peixe-espada-preto", false, Unit.G,Allergies.FISH));
 		m.put(69, new Ingredient(69, "pão de cereais ancestrais", true, Unit.G));
 		m.put(70, new Ingredient(70, "azeitonas pretas em rodelas", true, Unit.G));
 		m.put(71, new Ingredient(71, "vinagre", true, Unit.SPOON_SOUP));
-		m.put(72, new Ingredient(72, "ovo", true, Unit.UNIT));
+		m.put(72, new Ingredient(72, "ovo", true, Unit.UNIT,Allergies.EGGS));
 		m.put(73, new Ingredient(73, "puré de batata", true, Unit.EMB));
 		m.put(74, new Ingredient(74, "espinafres", true, Unit.G));
 		m.put(75, new Ingredient(75, "alface iceberg", true, Unit.G));
@@ -99,9 +99,9 @@ public class IngredientBank {
 
 		m.put(79, new Ingredient(79, "molho agridoce", true, Unit.SPOON_SOUP));
 		m.put(80, new Ingredient(80, "gengibre picado", true, Unit.SPOON_SOUP));
-		m.put(81, new Ingredient(81, "lombos de salmão", false, Unit.G));
+		m.put(81, new Ingredient(81, "lombos de salmão", false, Unit.G,Allergies.FISH));
 
-		m.put(82, new Ingredient(82, "polvo fresco", false, Unit.KG));
+		m.put(82, new Ingredient(82, "polvo fresco", false, Unit.KG,Allergies.FISH));
 		m.put(83, new Ingredient(83, "pão saloio em fatias", true, Unit.G));
 
 		m.put(84, new Ingredient(84, "melancia", true, Unit.G));
@@ -115,8 +115,8 @@ public class IngredientBank {
 		m.put(90, new Ingredient(90, "salada camponesa com tomate cherry", true, Unit.G));
 
 		m.put(91, new Ingredient(91, "açúcar amarelo", true, Unit.G));
-		m.put(92, new Ingredient(92, "manteiga", true, Unit.G));
-		m.put(93, new Ingredient(93, "manteiga de amendoim", true, Unit.G));
+		m.put(92, new Ingredient(92, "manteiga", true, Unit.G,Allergies.MILK));
+		m.put(93, new Ingredient(93, "manteiga de amendoim", true, Unit.G,Allergies.MILK));
 		m.put(94, new Ingredient(94, "farinha", true, Unit.G));
 		m.put(95, new Ingredient(95, "bicarbonato de sódio", true, Unit.SPOON_TEA));
 	}

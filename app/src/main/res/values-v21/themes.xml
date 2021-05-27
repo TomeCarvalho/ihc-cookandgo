@@ -4,4 +4,8 @@
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:colorControlActivated">#148E13</item>
     </style>
+
+    <style name="cb" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:checkMarkTint">#ff0000</item>
+    </style>
 </resources>
