@@ -13,7 +13,10 @@ public class SharedData {
     public static Set<Recipe> recipeSet = new TreeSet<>(
             (Recipe r1, Recipe r2) -> r1.getName().compareTo(r2.getName())
     );
+
     public static Set<Difficulty> difficultySet = new HashSet<>();
+    static { Collections.addAll(difficultySet, Difficulty.values());}
+
     public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
             (IngredientQuantity i1, IngredientQuantity i2) ->
                     i1.getIngredient().getName().compareTo(i2.getIngredient().getName())
@@ -133,6 +136,8 @@ public class SharedData {
             Log.i("SharedData", "contains: " + !containsAllergy(r.getAllergies(), allergySet));
             if (!containsAllergy(r.getAllergies(), allergySet)
                     && recipeTypeSet.contains(r.getType())
+                    && difficultySet.contains(r.getDifficulty())
+                    && (!vegetarian || r.isVegetarian())
                     && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
                 Log.i("SharedData", "recipe added: " + r);

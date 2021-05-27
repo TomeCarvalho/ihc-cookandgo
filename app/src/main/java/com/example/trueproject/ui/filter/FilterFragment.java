@@ -75,14 +75,27 @@ public class FilterFragment extends Fragment {
         });
 
         reverseSwitch = (SwitchMaterial) root.findViewById(R.id.sort_switch);
-        // SharedData.reverseSort = reverseSwitch.isSelected();
+        reverseSwitch.setChecked(SharedData.reverseSort);
 
         sortName = (RadioButton) root.findViewById(R.id.sort_name);
         sortTime = (RadioButton) root.findViewById(R.id.sort_time);
         sortDifficulty = (RadioButton) root.findViewById(R.id.sort_difficulty);
 
+        RadioButton rb = null;
+        switch (SharedData.sortType) {
+            case NAME:
+                rb = sortName;
+                break;
+            case TIME:
+                rb = sortTime;
+                break;
+            case DIFFICULTY:
+                rb = sortDifficulty;
+        }
+        rb.setChecked(true);
+
         onlyCookables = (CheckBox) root.findViewById(R.id.cookable_checkbox);
-        // SharedData.showUncookables = !onlyCookables.isChecked();
+        onlyCookables.setChecked(!SharedData.showUncookables);
 
         saveButton = (Button) root.findViewById(R.id.filter_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -106,11 +119,9 @@ public class FilterFragment extends Fragment {
         recipeTypesGV.setAdapter(arrayAdapter);
         RecipeType rt;
         for (int i = 0; i < recipeTypes.length; i++) {
-            recipeTypesGV.setItemChecked(i, true);
             rt = (RecipeType) recipeTypesGV.getItemAtPosition(i);
-            rt.setSelected(true);
+            recipeTypesGV.setItemChecked(i, rt.isSelected());
         }
-            // recipeTypesGV.setItemChecked(i, recipeTypes[i].isSelected());
     }
 
     private void initDifficultiesGVData() {
@@ -122,24 +133,19 @@ public class FilterFragment extends Fragment {
         difficultyGV.setAdapter(arrayAdapter);
         Difficulty difficulty;
         for (int i = 0; i < difficulties.length; i++) {
-            difficultyGV.setItemChecked(i, true);
             difficulty = (Difficulty) difficultyGV.getItemAtPosition(i);
-            difficulty.setSelected(true);
+            difficultyGV.setItemChecked(i, difficulty.isSelected());
         }
-            // difficultyGV.setItemChecked(i, difficulties[i].isSelected());
     }
 
     public void save(View view) {
         SharedData.reverseSort = reverseSwitch.isChecked();
         SharedData.showUncookables = !onlyCookables.isChecked();
         if (sortName.isChecked())
-            // SharedData.sortByName();
             SharedData.sortType = SortType.NAME;
         else if (sortTime.isChecked())
-            // SharedData.sortByTime();
             SharedData.sortType = SortType.TIME;
         else if (sortDifficulty.isChecked())
-            // SharedData.sortByDifficulty();
             SharedData.sortType = SortType.DIFFICULTY;
         else
             Log.i(TAG, "bug on save: no sort is selected");

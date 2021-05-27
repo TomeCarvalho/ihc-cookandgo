@@ -7,7 +7,7 @@ public enum Difficulty {
 
     private String name;
     private int val;
-    private boolean selected = false;
+    private boolean selected = true;
 
     private Difficulty(String name, int val) {
         this.name = name;
