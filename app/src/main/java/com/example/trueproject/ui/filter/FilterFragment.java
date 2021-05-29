@@ -41,8 +41,8 @@ public class FilterFragment extends Fragment {
     private Button saveButton;
     private CheckBox onlyCookables;
     // private SearchView searchView;
-    private EditText searchEditText;
-    private Button searchButton;
+//    private EditText searchEditText;
+//    private Button searchButton;
     private FilterViewModel filterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -110,16 +110,16 @@ public class FilterFragment extends Fragment {
             }
         });
 
-        searchEditText = (EditText) root.findViewById(R.id.search_edittext);
-        searchButton = (Button) root.findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "searchButton onClick");
-                SharedData.searchQuery = searchEditText.getText().toString();
-                SharedData.updateRecipes();
-            }
-        });
+//        searchEditText = (EditText) root.findViewById(R.id.search_edittext);
+//        searchButton = (Button) root.findViewById(R.id.search_button);
+//        searchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "searchButton onClick");
+//                SharedData.searchQuery = searchEditText.getText().toString();
+//                SharedData.updateRecipes();
+//            }
+//        });
 //        searchView = (SearchView) root.findViewById(R.id.recipes_searchview);
 //        searchView.setOnSearchClickListener(new View.OnClickListener() {
 //            @Override

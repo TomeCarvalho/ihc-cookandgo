@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -41,6 +42,7 @@ public class RecipesFragment extends Fragment {
     public Button plusButton;
     public ImageButton filter;
     public TextView nMealsView;
+    private androidx.appcompat.widget.SearchView searchView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,7 +91,7 @@ public class RecipesFragment extends Fragment {
                 initRecipesGridView();
             }
         });
-        filter= (ImageButton) root.findViewById(R.id.filter);
+        filter = (ImageButton) root.findViewById(R.id.filter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +102,41 @@ public class RecipesFragment extends Fragment {
                         .commit();
             }
         });
+
+        searchView = (androidx.appcompat.widget.SearchView) root.findViewById(R.id.recipes_searchview);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i(TAG, "searchView onQueryTextSubmit: " + "'" + query + "'");
+                SharedData.searchQuery = query.toLowerCase();
+                SharedData.updateRecipes();
+                initRecipesGridView();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i(TAG, "searchView onQueryTextChange: " + "'" + newText + "'");
+                if (newText.equals("")) {
+                    SharedData.searchQuery = "";
+                    SharedData.updateRecipes();
+                    initRecipesGridView();
+                }
+                return true;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                Log.i(TAG, "searchView onClose");
+                searchView.clearFocus();
+                SharedData.searchQuery = "";
+                SharedData.updateRecipes();
+                initRecipesGridView();
+                return true;
+            }
+        });
+
         SharedData.updateRecipes();
         Log.i("RecipesFragment", "FUI CRIADO :)");
         return root;

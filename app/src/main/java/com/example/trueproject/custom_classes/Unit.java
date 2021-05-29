@@ -7,7 +7,7 @@ public enum Unit {
 	DL("dl"),
 	ML("ml"),
 	SPOON_COFFEE(" c.café"),
-	SPOON_DESSERT(" c.sobremesa"),
+	SPOON_DESSERT(" c.sobre"),
 	SPOON_TEA(" c.chá"),
 	SPOON_SOUP(" c.sopa"),
 	ENOUGH(" qb"),

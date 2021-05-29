@@ -8,13 +8,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
+            android:paddingTop="15dp"
             android:id="@+id/ing_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:minLines="3"
             android:layout_weight="1" />
 
         <TextView
@@ -27,7 +30,7 @@
             android:id="@+id/ing_unit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_weight="0.4" />
 
         <Button
