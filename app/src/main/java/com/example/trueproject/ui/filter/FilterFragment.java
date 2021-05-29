@@ -10,9 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,9 @@ public class FilterFragment extends Fragment {
     private RadioButton sortDifficulty;
     private Button saveButton;
     private CheckBox onlyCookables;
+    // private SearchView searchView;
+    private EditText searchEditText;
+    private Button searchButton;
     private FilterViewModel filterViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -104,6 +109,41 @@ public class FilterFragment extends Fragment {
                 save(v);
             }
         });
+
+        searchEditText = (EditText) root.findViewById(R.id.search_edittext);
+        searchButton = (Button) root.findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "searchButton onClick");
+                SharedData.searchQuery = searchEditText.getText().toString();
+                SharedData.updateRecipes();
+            }
+        });
+//        searchView = (SearchView) root.findViewById(R.id.recipes_searchview);
+//        searchView.setOnSearchClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i(TAG, "searchView onClick");
+//                SharedData.searchQuery = (String) searchView.getQuery();
+//                SharedData.updateRecipes();
+//            }
+//        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                Log.i(TAG, "onQueryTextSubmit - query: " + query);
+//                SharedData.searchQuery = query;
+//                SharedData.updateRecipes();
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                Log.i(TAG, "onQueryTextChange - newText" + newText);
+//                return true;
+//            }
+//        });
 
         initRecipeTypesGVData();
         initDifficultiesGVData();

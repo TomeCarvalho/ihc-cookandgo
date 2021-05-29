@@ -25,6 +25,7 @@
                 android:layout_weight="1"
                 android:drawableEnd="@drawable/pessoa"
                 android:gravity="center" />
+
             <Button
                 android:id="@+id/decrease"
                 android:layout_width="0dp"
@@ -65,6 +66,31 @@
                 android:background="@color/dark"
                 android:gravity="center"
                 android:src="@drawable/filter" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/search_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:paddingEnd="10dp" />
+
+            <Button
+                android:clickable="true"
+                android:id="@+id/search_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:text="P"
+                android:focusable="true" />
 
         </LinearLayout>
 

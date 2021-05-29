@@ -28,6 +28,7 @@ public class SharedData {
     public static boolean vegetarian = false;
     public static boolean reverseSort = false;
     public static SortType sortType = SortType.NAME;
+    public static String searchQuery = "";
 
     public static int[] recipeImgs = new int[]{
             R.drawable.recipe1,
@@ -138,6 +139,7 @@ public class SharedData {
                     && recipeTypeSet.contains(r.getType())
                     && difficultySet.contains(r.getDifficulty())
                     && (!vegetarian || r.isVegetarian())
+                    && (searchQuery.equals("") || r.getName().contains(searchQuery))
                     && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
                 Log.i("SharedData", "recipe added: " + r);
