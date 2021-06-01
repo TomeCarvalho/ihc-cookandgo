@@ -45,8 +45,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="3"
                 android:orientation="horizontal"
-                android:paddingHorizontal="0dp">
+                android:paddingHorizontal="25dp">
 
+                <!--TODO: alinhar tempo e icone para a esquerda-->
                 <TextView
                     android:id="@+id/timetocook"
                     android:layout_width="match_parent"
@@ -55,7 +56,7 @@
                     android:drawableTop="@drawable/clock"
                     android:gravity="center"
                     android:text="[time]" />
-
+1
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

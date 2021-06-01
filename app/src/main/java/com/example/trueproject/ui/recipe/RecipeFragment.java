@@ -28,6 +28,7 @@ import com.example.trueproject.custom_classes.Recipe;
 import com.example.trueproject.custom_classes.SharedData;
 import com.example.trueproject.ui.IngredientsView;
 import com.example.trueproject.ui.IngredientsViewAdapter;
+import com.example.trueproject.ui.recipes.RecipesFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -70,20 +71,19 @@ public class RecipeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 IngredientQuantity[] ingQties = recipe.getIngredientQuantities(SharedData.nMeals);
-                if(recipe.canBeCookedWith(SharedData.ingQtySet,SharedData.nMeals)){
+                if (recipe.canBeCookedWith(SharedData.ingQtySet, SharedData.nMeals)) {
                     double qty;
                     for (IngredientQuantity ingQty : ingQties) {
                         for (IngredientQuantity ig : SharedData.ingQtySet) {
                             if (ig.getIngredient().getName().equals(ingQty.getIngredient().getName())) {
                                 double qtd = SharedData.getQuantityOf(ig.getIngredient()) - ingQty.getQuantity();
-                                ig.setQuantity(round(qtd,2));
+                                ig.setQuantity(round(qtd, 2));
                                 break;
                             }
                         }
                     }
                     update();
-                }
-                else{
+                } else {
                     Toast.makeText(getContext(), "Não é possível fazer esta receita.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -188,10 +188,18 @@ public class RecipeFragment extends Fragment {
             spanStr.setSpan((enough.get(i) ? new ForegroundColorSpan(Color.parseColor("#006400")) : new ForegroundColorSpan(Color.RED)), init, fin, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             init = fin + 1;
         }
-
-
         ingView.setText(spanStr);
     }
+
+    // TODO: onde colocar onKeyDown? (https://stackoverflow.com/questions/50369458/how-to-implement-onkeydown-in-fragment)
+    public void returnToRecipes() {
+        RecipesFragment recipesFragment = new RecipesFragment();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.recipe_linear_layout, recipesFragment, "findThisFragment")
+                .commit();
+    }
+
     private static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
         long factor = (long) Math.pow(10, places);
