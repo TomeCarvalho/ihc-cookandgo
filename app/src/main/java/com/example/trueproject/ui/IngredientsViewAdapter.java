@@ -76,16 +76,14 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
             return;
         }
         double val = Double.parseDouble(currentNumberPosition.getQuantity());
-        if (str.equals("-")) val -= Double.parseDouble(change.getText().toString());
-        else if (str.equals("+")) val += Double.parseDouble(change.getText().toString());
-
-        if (val < 0) val = 0.0;
+        val += (str.equals("+") ? 1 : -1) * Double.parseDouble(change.getText().toString());
+        val = Math.max(val, 0);
 
         String qtd = String.valueOf(val);
         currentNumberPosition.setQuantity(qtd);
         qntd.setText(qtd);
         Log.i("TAG", "teste");
-        for (IngredientQuantity ig : SharedData.ingQtySet) {
+        for (IngredientQuantity ig : SharedData.ingQtySetFiltered) {
             Log.i("TAG", "ig.getName(): " + ig.getIngredient().getName());
             Log.i("TAG", "currentNumberPosition.getName(): " + currentNumberPosition.getName());
             if (ig.getIngredient().getName().equals(currentNumberPosition.getName())) {
@@ -94,8 +92,5 @@ public class IngredientsViewAdapter extends ArrayAdapter<IngredientsView> {
                 break;
             }
         }
-        //Log.i("TAG", "change: " + change.getText());
-
     }
-
 }

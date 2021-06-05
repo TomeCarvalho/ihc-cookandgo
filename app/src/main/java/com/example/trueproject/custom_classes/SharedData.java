@@ -1,13 +1,17 @@
 package com.example.trueproject.custom_classes; //
 
 import android.graphics.drawable.Drawable;
+import android.telephony.ClosedSubscriberGroupInfo;
 import android.util.Log;
 
 import com.example.trueproject.R;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class SharedData {
+    private final static String TAG = "SharedData";
     public static Set<Allergies> allergySet = new HashSet<>();
     public static Set<RecipeType> recipeTypeSet = new HashSet<>();
     public static Set<Recipe> recipeSet = new TreeSet<>(
@@ -15,12 +19,18 @@ public class SharedData {
     );
 
     public static Set<Difficulty> difficultySet = new HashSet<>();
-    static { Collections.addAll(difficultySet, Difficulty.values());}
+    static { Collections.addAll(difficultySet, Difficulty.values()); }
 
     public static Set<IngredientQuantity> ingQtySet = new TreeSet<>(
             (IngredientQuantity i1, IngredientQuantity i2) ->
                     i1.getIngredient().getName().compareTo(i2.getIngredient().getName())
     );
+
+    public static Set<IngredientQuantity> ingQtySetFiltered = new TreeSet<>(
+            (IngredientQuantity i1, IngredientQuantity i2) ->
+                    i1.getIngredient().getName().compareTo(i2.getIngredient().getName())
+    );
+
     public static Recipe chosenRecipe = null;
     public static int nMeals = 1; // number of meals to cook
     public static boolean ingredientsLoaded = false;
@@ -29,6 +39,7 @@ public class SharedData {
     public static boolean reverseSort = false;
     public static SortType sortType = SortType.NAME;
     public static String searchQuery = "";
+    public static String ingSearchQuery = "";
 
     public static int[] recipeImgs = new int[]{
             R.drawable.recipe1,
@@ -54,7 +65,7 @@ public class SharedData {
         Collections.addAll(recipeTypeSet, RecipeType.values());
         addEveryIngQty();
         loadJoaquina();
-        Log.i("SharedData", "update recipes");
+        Log.i(TAG, "update recipes");
         updateRecipes();
     }
 
@@ -106,24 +117,24 @@ public class SharedData {
     }
 
     public static void updateRecipes() {
-        Log.i("SharedData", "updateRecipes called");
-        Log.i("SharedData", "updateRecipes reverseSort: " + reverseSort);
-        Log.i("SharedData", "updateRecipes sortType: " + sortType);
+        Log.i(TAG, "updateRecipes called");
+        Log.i(TAG, "updateRecipes reverseSort: " + reverseSort);
+        Log.i(TAG, "updateRecipes sortType: " + sortType);
         switch (sortType) {
             case NAME:
-                Log.i("SharedData", "updateRecipes: case NAME");
+                Log.i(TAG, "updateRecipes: case NAME");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
                         (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName()));
                 break;
             case TIME:
-                Log.i("SharedData", "updateRecipes: case TIME");
+                Log.i(TAG, "updateRecipes: case TIME");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
                         r1.getCookingTime().compareTo(r2.getCookingTime()) == 0 ?
                                 (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName())
                                 : (reverseSort ? -1 : 1) * r1.getCookingTime().compareTo(r2.getCookingTime()));
                 break;
             case DIFFICULTY:
-                Log.i("SharedData", "updateRecipes: case DIFFICULTY");
+                Log.i(TAG, "updateRecipes: case DIFFICULTY");
                 recipeSet = new TreeSet<>((Recipe r1, Recipe r2) ->
                         r1.getDifficulty().getVal() - r2.getDifficulty().getVal() == 0 ?
                                 (reverseSort ? -1 : 1) * r1.getName().compareTo(r2.getName())
@@ -131,10 +142,10 @@ public class SharedData {
         }
 
         for (Recipe r : RecipeBank.getAllRecipes()) {
-            Log.i("SharedData", "recipe: " + r);
-            Log.i("SharedData", "getAllergies: " + r.getAllergies());
-            Log.i("SharedData", "allergieSet: " + allergySet);
-            Log.i("SharedData", "contains: " + !containsAllergy(r.getAllergies(), allergySet));
+            Log.i(TAG, "recipe: " + r);
+            Log.i(TAG, "getAllergies: " + r.getAllergies());
+            Log.i(TAG, "allergieSet: " + allergySet);
+            Log.i(TAG, "contains: " + !containsAllergy(r.getAllergies(), allergySet));
             if (!containsAllergy(r.getAllergies(), allergySet)
                     && recipeTypeSet.contains(r.getType())
                     && difficultySet.contains(r.getDifficulty())
@@ -142,7 +153,7 @@ public class SharedData {
                     && (searchQuery.equals("") || r.getName().toLowerCase().contains(searchQuery))
                     && (showUncookables || r.canBeCookedWith(ingQtySet, nMeals))) {
                 recipeSet.add(r);
-                Log.i("SharedData", "recipe added: " + r);
+                Log.i(TAG, "recipe added: " + r);
             }
         }
     }
@@ -181,6 +192,20 @@ public class SharedData {
 
     public static void debugAllergies() {
         for (Allergies a : allergySet)
-            Log.i("SharedData", a.getName());
+            Log.i(TAG, a.getName());
+    }
+
+    public static void updateIngQtySetFiltered() {
+        Log.i(TAG, "updateIngQtySetFiltered");
+        for (IngredientQuantity ingQty : ingQtySet) {
+            if (ingQty.getIngredient().getName().toLowerCase().contains(ingSearchQuery)) {
+                ingQtySetFiltered.add(ingQty);
+                Log.i(TAG, "ingQtySetFiltered: added " + ingQty);
+            }
+            else {
+                ingQtySetFiltered.remove(ingQty);
+                Log.i(TAG, "ingQtySetFiltered: removed " + ingQty);
+            }
+        }
     }
 }
